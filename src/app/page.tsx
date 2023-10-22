@@ -27,5 +27,5 @@ const MainHome = () => <div>
 </div >
 
 export default function Home() {
-   return <MainHome />
+   return <HelloWorld />
 }
