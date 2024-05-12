@@ -22,7 +22,7 @@ jobs:
         mv main gin-service
         ls
     - name: Running gin-service
-      run: cd web-service-gin/ && ./gin-service &
+      run: cd web-service-gin/ && ./gin-service
     - name: Running ql-service
       run: |
         cd gqlgen-web-service/
@@ -30,4 +30,4 @@ jobs:
         mv server ql-service
         ls
     - name: Running ql-service
-      run: cd gqlgen-web-service/ && ./ql-service &
+      run: cd gqlgen-web-service/ && ./ql-service
