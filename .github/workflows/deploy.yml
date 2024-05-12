@@ -15,12 +15,6 @@ jobs:
 
     - name: Just checking
       run: free -h
-    - name: Building and Running Next app
-      run: | 
-        cd next-app/
-        npm i
-        npm run build --if-present
-        pm2 reload 0
     - name: Building gin-service
       run: |
         cd web-service-gin/
@@ -28,7 +22,7 @@ jobs:
         mv main gin-service
         ls
     - name: Running gin-service
-      run: ./gin-service &
+      run: cd web-service-gin/ && ./gin-service &
     - name: Running ql-service
       run: |
         cd gqlgen-web-service/
@@ -36,4 +30,4 @@ jobs:
         mv server ql-service
         ls
     - name: Running ql-service
-      run: ./ql-service &
+      run: cd gqlgen-web-service/ && ./ql-service &
