@@ -26,6 +26,7 @@ jobs:
         cd web-service-gin/
         go build cmd/api/main.go
         mv main gin-service
+        ls
     - name: Running gin-service
       run: ./gin-service &
     - name: Running ql-service
@@ -33,5 +34,6 @@ jobs:
         cd gqlgen-web-service/
         go build server.go
         mv server ql-service
+        ls
     - name: Running ql-service
       run: ./ql-service &
