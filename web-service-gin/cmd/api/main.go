@@ -11,9 +11,9 @@ import (
 )
 
 func main() {
-	// gin.SetMode(gin.ReleaseMode)
-	// router := gin.New()
-	router := gin.Default()
+	gin.SetMode(gin.ReleaseMode)
+	router := gin.New()
+	//router := gin.Default()
 	router.ForwardedByClientIP = true
 	router.SetTrustedProxies([]string{"127.0.0.1"})
 

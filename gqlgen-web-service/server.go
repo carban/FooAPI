@@ -2,7 +2,6 @@ package main
 
 import (
 	"app/graph"
-	"log"
 	"net/http"
 	"os"
 
@@ -23,6 +22,6 @@ func main() {
 	http.Handle("/playground", playground.Handler("FooApi Playground", "/query"))
 	http.Handle("/query", srv)
 
-	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+	// log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
+	http.ListenAndServe(":"+port, nil)
 }
