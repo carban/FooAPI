@@ -21,21 +21,17 @@ jobs:
         npm i
         npm run build --if-present
         pm2 reload 0
-    - name: Building and Running gin-service
+    - name: Building gin-service
       run: |
         cd web-service-gin/
-        ls
         go build cmd/api/main.go
-        ls
         mv main gin-service
-        ls
-        ./gin-service &
-    - name: Building and Running ql-service
+    - name: Running gin-service
+      run: ./gin-service &
+    - name: Running ql-service
       run: |
         cd gqlgen-web-service/
-        ls
         go build server.go
-        ls
         mv server ql-service
-        ls
-        ./ql-service &
+    - name: Running ql-service
+      run: ./ql-service &
