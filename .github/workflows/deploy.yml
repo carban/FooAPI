@@ -26,12 +26,10 @@ jobs:
         cd web-service-gin/
         go build cmd/api/main.go
         mv main gin-service
-      # pkill gin-service
         ./gin-service &
     - name: Building and Running ql-service
       run: |
         cd gqlgen-web-service/
         go build server.go
         mv server ql-service
-      # pkill ql-service
         ./ql-service &
