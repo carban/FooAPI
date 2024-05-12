@@ -24,12 +24,18 @@ jobs:
     - name: Building and Running gin-service
       run: |
         cd web-service-gin/
+        ls
         go build cmd/api/main.go
+        ls
         mv main gin-service
+        ls
         ./gin-service &
     - name: Building and Running ql-service
       run: |
         cd gqlgen-web-service/
+        ls
         go build server.go
+        ls
         mv server ql-service
+        ls
         ./ql-service &
