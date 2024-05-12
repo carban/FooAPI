@@ -14,7 +14,9 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Just checking
-      run: node -v
-      run: pwd
-      run: ls
-      run: pm2 list
+      run: | 
+        node -v
+        pwd
+        ls
+        pm2 list
+    - run: echo "hello"
