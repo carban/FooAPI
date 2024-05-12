@@ -15,3 +15,6 @@ jobs:
 
     - name: Just checking
       run: node -v
+      run: pwd
+      run: ls
+      run: pm2 list
