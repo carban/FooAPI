@@ -26,10 +26,12 @@ jobs:
         cd web-service-gin/
         go build cmd/api/main.go
         mv main gin-service
-        ./gin-service && echo "Running gin-service"
+        ./gin-service &
+        echo $?
     - name: Building and Running ql-service
       run: |
         cd gqlgen-web-service/
         go build server.go
         mv server ql-service
-        ./ql-service && echo "Running ql-service"
+        ./ql-service &
+        echo $?
