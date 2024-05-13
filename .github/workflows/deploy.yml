@@ -26,6 +26,7 @@ jobs:
         cd web-service-gin/
         go build cmd/api/main.go
         mv main gin-service
+        pidof gin-service && pkill gin-service || echo "No Process Found" 
         ./gin-service &
         echo $?
     - name: Building and Running ql-service
@@ -33,5 +34,6 @@ jobs:
         cd gqlgen-web-service/
         go build server.go
         mv server ql-service
+        pidof ql-service && pkill ql-service || echo "No Process Found"
         ./ql-service &
         echo $?
