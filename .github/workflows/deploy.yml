@@ -15,25 +15,27 @@ jobs:
 
     - name: Just checking
       run: free -h
+    - name: Building and Running gin-service
+      run: |
+        cd web-service-gin/
+        go build cmd/api/main.go
+        mv main gin-service
+        pidof gin-service && killall gin-service || echo "No Process Found" 
+        ./gin-service &
+        echo $?
+        pidof gin-service
+    - name: Building and Running ql-service
+      run: |
+        cd gqlgen-web-service/
+        go build server.go
+        mv server ql-service
+        pidof ql-service && killall ql-service || echo "No Process Found"
+        ./ql-service &
+        echo $?
+        pidof gin-service
     - name: Building and Running Next app
       run: | 
         cd next-app/
         npm i
         npm run build --if-present
         pm2 reload 0
-    - name: Building and Running gin-service
-      run: |
-        cd web-service-gin/
-        go build cmd/api/main.go
-        mv main gin-service
-        pidof gin-service && pkill gin-service || echo "No Process Found" 
-        ./gin-service &
-        echo $?
-    - name: Building and Running ql-service
-      run: |
-        cd gqlgen-web-service/
-        go build server.go
-        mv server ql-service
-        pidof ql-service && pkill ql-service || echo "No Process Found"
-        ./ql-service &
-        echo $?
