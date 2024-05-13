@@ -25,11 +25,11 @@ export default function Endpoint({ status, path, desc, payload, response }: { st
 
     return <div>
         <div className="flex flex-col xl:flex-row lg:flex-row md:flex-col items-center p-2 lg:justify-between mt-3 bg-gray-800">
-            <h1 className={`${color} font-bold text-sm text-center rounded-3xl w-24 text-gray-900 lg:mr-14`}>{status}</h1>
-            <code className="lg:w-60 hover:underline">
+            <h1 className={`${color} w-full md:w-32 lg:w-32 xl:w-32 font-bold text-sm text-center rounded-3xl w-24 text-gray-900 lg:mr-14`}>{status}</h1>
+            <code className="lg:w-60 hover:underline text-white">
                 <Link href={path} >{path}</Link>
             </code>
-            <h3 className="text-sm">
+            <h3 className="text-sm text-white">
                 {desc}
             </h3>
             <button onClick={handleToggle}>

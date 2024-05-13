@@ -70,15 +70,15 @@ function allServices(): object[] {
 export default function VerticalNavbar({ children }: any) {
     const pathname = usePathname();
     const services: any[] = allServices();
-    return <main className="min-h-screen w-full dark:bg-gray-900" x-data="layout">
+    return <main className="min-h-screen w-full bg-gray-900" x-data="layout">
         {/* <header 
         </header> */}
         <Navbar />
         <div className="flex">
-            <aside className="flex flex-col w-60 h-screen mx-5 py-4 bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700" x-show="asideOpen">
+            <aside className="flex flex-col w-60 mx-5 py-4 border-r rtl:border-r-0 rtl:border-l bg-gray-900 border-gray-700" x-show="asideOpen">
                 {
                     services.map((s, index) => (
-                        <Link key={index} href={s.path} className={`flex items-center space-x-1 rounded-md px-2 py-3 ${pathname === s.path ? 'bg-gray-800' : 'hover:bg-gray-800'}`}>
+                        <Link key={index} href={s.path} className={`flex items-center space-x-1 rounded-md px-2 py-3 text-white ${pathname === s.path ? 'bg-gray-800' : 'hover:bg-gray-800'}`}>
                             {s.icon}
                             <span>{s.name}</span>
                         </Link>
