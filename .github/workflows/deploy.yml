@@ -32,7 +32,7 @@ jobs:
         pidof ql-service && killall ql-service || echo "No Process Found"
         ./ql-service &
         echo $?
-        pidof gin-service
+        pidof ql-service
     - name: Building and Running Next app
       run: | 
         cd next-app/
