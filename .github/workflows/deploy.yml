@@ -21,7 +21,7 @@ jobs:
         go build cmd/api/main.go
         mv main gin-service
         pidof gin-service && killall gin-service || echo "No Process Found" 
-        ./gin-service &
+        RUNNER_TRACKING_ID="" && ./gin-service &
         echo $?
         pidof gin-service
     - name: Building and Running ql-service
@@ -30,7 +30,7 @@ jobs:
         go build server.go
         mv server ql-service
         pidof ql-service && killall ql-service || echo "No Process Found"
-        ./ql-service &
+        RUNNER_TRACKING_ID="" && ./ql-service &
         echo $?
         pidof ql-service
     - name: Building and Running Next app
