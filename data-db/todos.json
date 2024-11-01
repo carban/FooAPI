@@ -1,0 +1,702 @@
+[
+    {
+        "id": "1",
+        "todo": "Organize your design portfolio: Showcase your best work in a professional manner.",
+        "state": "Working",
+        "closed": true,
+        "userId": "1"
+    },
+    {
+        "id": "2",
+        "todo": "Visit a historical building for inspiration: Learn from architectural styles of the past.",
+        "state": "Working",
+        "closed": false,
+        "userId": "1"
+    },
+    {
+        "id": "3",
+        "todo": "Research a recent scientific discovery in chemistry: Stay up-to-date on the latest advancements.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "2"
+    },
+    {
+        "id": "4",
+        "todo": "Organize your lab equipment: Maintain a clean and efficient workspace.",
+        "state": "Working",
+        "closed": true,
+        "userId": "2"
+    },
+    {
+        "id": "5",
+        "todo": "Update classroom decorations: Create a welcoming and inspiring learning environment.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "3"
+    },
+    {
+        "id": "6",
+        "todo": "Research new teaching methods: Explore innovative ways to enhance student engagement.",
+        "state": "Completed",
+        "closed": true,
+        "userId": "3"
+    },
+    {
+        "id": "7",
+        "todo": "Organize a virtual game night with friends: Choose a multiplayer game and have some laughs.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "4"
+    },
+    {
+        "id": "8",
+        "todo": "Research a new game genre: Explore new gaming experiences and broaden your horizons.",
+        "state": "Completed",
+        "closed": true,
+        "userId": "4"
+    },
+    {
+        "id": "9",
+        "todo": "Channel your inner chef: Bake a delicious cake from scratch.",
+        "state": "Working",
+        "closed": true,
+        "userId": "5"
+    },
+    {
+        "id": "10",
+        "todo": "Unleash your creativity: Design a unique greeting card for a friend.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "5"
+    },
+    {
+        "id": "11",
+        "todo": "Review a patient's medical history: Be prepared for any potential health concerns.",
+        "state": "Completed",
+        "closed": true,
+        "userId": "6"
+    },
+    {
+        "id": "12",
+        "todo": "Practice a new clinical skill: Stay current and enhance your patient care abilities",
+        "state": "Working",
+        "closed": true,
+        "userId": "6"
+    },
+    {
+        "id": "13",
+        "todo": "Embrace the outdoors: Plant a small herb garden on your balcony.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "7"
+    },
+    {
+        "id": "14",
+        "todo": "Master a new skill: Learn how to juggle three balls (impress your friends!).",
+        "state": "Pending",
+        "closed": false,
+        "userId": "7"
+    },
+    {
+        "id": "15",
+        "todo": "Become a trivia champion: Spend an hour memorizing random fun facts.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "8"
+    },
+    {
+        "id": "16",
+        "todo": "Declutter your digital space: Organize your photos and delete unnecessary files.",
+        "state": "Working",
+        "closed": false,
+        "userId": "8"
+    },
+    {
+        "id": "17",
+        "todo": "Channel your artistic side: Paint a self-portrait (embrace imperfections!).",
+        "state": "Pending",
+        "closed": true,
+        "userId": "9"
+    },
+    {
+        "id": "18",
+        "todo": "Give your home a spa treatment: Light some candles, draw a relaxing bath, and unwind.",
+        "state": "Working",
+        "closed": false,
+        "userId": "9"
+    },
+    {
+        "id": "19",
+        "todo": "Channel your inner detective: Organize a game night with a murder mystery theme.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "10"
+    },
+    {
+        "id": "20",
+        "todo": "Embrace the power of words: Write a short poem (even a limerick!).",
+        "state": "Working",
+        "closed": true,
+        "userId": "10"
+    },
+    {
+        "id": "21",
+        "todo": "Master a new dance move: Learn the choreography to your favorite song.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "11"
+    },
+    {
+        "id": "22",
+        "todo": "Become a language whiz: Learn basic greetings in a new language you've always wanted to speak.",
+        "state": "Working",
+        "closed": true,
+        "userId": "11"
+    },
+    {
+        "id": "23",
+        "todo": "Research a new author you've been curious about: Expand your literary horizons.",
+        "state": "Working",
+        "closed": false,
+        "userId": "12"
+    },
+    {
+        "id": "24",
+        "todo": "Write a book review for a favorite read: Share your thoughts and recommendations with others.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "12"
+    },
+    {
+        "id": "25",
+        "todo": "Channel your inner athlete: Train for a 5K run and challenge yourself.",
+        "state": "Completed",
+        "closed": true,
+        "userId": "13"
+    },
+    {
+        "id": "26",
+        "todo": "Become a financial guru: Review your budget and set some savings goals.",
+        "state": "Pending",
+        "closed": true,
+        "userId": "13"
+    },
+    {
+        "id": "27",
+        "todo": "Unleash your creativity: Write a short story with a surprise ending.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "14"
+    },
+    {
+        "id": "28",
+        "todo": "Embrace lifelong learning: Take an online course on a topic that interests you.",
+        "state": "Completed",
+        "closed": true,
+        "userId": "14"
+    },
+    {
+        "id": "29",
+        "todo": "Channel your inner Marie Kondo: Declutter your closet and donate unused clothes.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "15"
+    },
+    {
+        "id": "30",
+        "todo": "Conquer your inbox: Unsubscribe from unwanted emails and organize remaining messages.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "15"
+    },
+    {
+        "id": "31",
+        "todo": "Embrace technology: Learn how to code a simple program.",
+        "state": "Completed",
+        "closed": true,
+        "userId": "16"
+    },
+    {
+        "id": "32",
+        "todo": "Become a baking pro: Perfect your favorite cookie recipe (and share with friends!).",
+        "state": "Working",
+        "closed": false,
+        "userId": "16"
+    },
+    {
+        "id": "33",
+        "todo": "Become a home barista: Experiment with brewing methods and craft your perfect cup of coffee.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "17"
+    },
+    {
+        "id": "34",
+        "todo": "Channel your inner architect: Build a pillow fort and unleash your imagination.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "17"
+    },
+    {
+        "id": "35",
+        "todo": "Stargaze and learn constellations: Find a dark spot with minimal light pollution, and use a stargazing app to identify constellations.",
+        "state": "Working",
+        "closed": false,
+        "userId": "18"
+    },
+    {
+        "id": "36",
+        "todo": "Host a themed movie night: Pick a genre (e.g., sci-fi, comedy) and prepare themed snacks and decorations.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "18"
+    },
+    {
+        "id": "37",
+        "todo": "Do a digital detox: Disconnect from social media and spend time reconnecting with yourself and loved ones.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "19"
+    },
+    {
+        "id": "38",
+        "todo": "Challenge yourself to a puzzle: Try a crossword, sudoku, or jigsaw puzzle to test your problem-solving skills.",
+        "state": "Pending",
+        "closed": true,
+        "userId": "19"
+    },
+    {
+        "id": "39",
+        "todo": "Write a letter to your future self: Reflect on your current goals and aspirations, and seal it for future you to discover.",
+        "state": "Working",
+        "closed": false,
+        "userId": "20"
+    },
+    {
+        "id": "40",
+        "todo": "Learn a magic trick: Impress your friends and family with a simple yet mind-boggling magic trick you can learn online.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "20"
+    },
+    {
+        "id": "41",
+        "todo": "Clean and organize your fridge: Discard expired items, wipe down shelves, and arrange food for better visibility and accessibility.",
+        "state": "Working",
+        "closed": false,
+        "userId": "21"
+    },
+    {
+        "id": "42",
+        "todo": "Give your houseplants some TLC: Dust their leaves, check for signs of pests, and water them according to their needs.",
+        "state": "Working",
+        "closed": false,
+        "userId": "21"
+    },
+    {
+        "id": "43",
+        "todo": "Write a song (even if it's just the lyrics!): Express yourself creatively and have fun with the process.",
+        "state": "Working",
+        "closed": false,
+        "userId": "22"
+    },
+    {
+        "id": "44",
+        "todo": "Do a home workout: Find a free online routine that suits your fitness level and get your body moving.",
+        "state": "Working",
+        "closed": true,
+        "userId": "22"
+    },
+    {
+        "id": "45",
+        "todo": "Learn a new origami fold:  Challenge yourself with a more intricate origami design and create a beautiful paper sculpture.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "23"
+    },
+    {
+        "id": "46",
+        "todo": "Organize a board game tournament: Invite friends, pick a variety of games, and crown the ultimate board game champion.",
+        "state": "Pending",
+        "closed": true,
+        "userId": "23"
+    },
+    {
+        "id": "47",
+        "todo": "Practice mindfulness meditation: Find a quiet space, focus on your breath, and observe your thoughts without judgment. Aim for a longer meditation session this time.",
+        "state": "Working",
+        "closed": true,
+        "userId": "24"
+    },
+    {
+        "id": "48",
+        "todo": "Channel your inner artist: Upcycle an old item like a jar or a piece of furniture and give it a new lease on life.",
+        "state": "Working",
+        "closed": true,
+        "userId": "24"
+    },
+    {
+        "id": "49",
+        "todo": "Make a grocery list",
+        "state": "Completed",
+        "closed": false,
+        "userId": "25"
+    },
+    {
+        "id": "50",
+        "todo": "Check the fridge",
+        "state": "Pending",
+        "closed": true,
+        "userId": "25"
+    },
+    {
+        "id": "51",
+        "todo": "Finish reading assigned book",
+        "state": "Completed",
+        "closed": true,
+        "userId": "26"
+    },
+    {
+        "id": "52",
+        "todo": "Prepare discussion points",
+        "state": "Pending",
+        "closed": false,
+        "userId": "26"
+    },
+    {
+        "id": "53",
+        "todo": "Reach out to a struggling student: Offer extra support and encouragement.",
+        "state": "Working",
+        "closed": false,
+        "userId": "27"
+    },
+    {
+        "id": "54",
+        "todo": "Practice a new gaming skill: Hone your reflexes, aim, or strategic thinking.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "27"
+    },
+    {
+        "id": "55",
+        "todo": "Gather necessary tools",
+        "state": "Pending",
+        "closed": true,
+        "userId": "28"
+    },
+    {
+        "id": "56",
+        "todo": "Watch tutorial",
+        "state": "Completed",
+        "closed": false,
+        "userId": "28"
+    },
+    {
+        "id": "57",
+        "todo": "Pick out a fun gift",
+        "state": "Completed",
+        "closed": false,
+        "userId": "29"
+    },
+    {
+        "id": "58",
+        "todo": "Plan a small celebration",
+        "state": "Working",
+        "closed": true,
+        "userId": "29"
+    },
+    {
+        "id": "59",
+        "todo": "Book accommodation",
+        "state": "Working",
+        "closed": false,
+        "userId": "30"
+    },
+    {
+        "id": "60",
+        "todo": "Research things to do",
+        "state": "Completed",
+        "closed": false,
+        "userId": "30"
+    },
+    {
+        "id": "61",
+        "todo": "Water the plants",
+        "state": "Working",
+        "closed": false,
+        "userId": "31"
+    },
+    {
+        "id": "62",
+        "todo": "Take out the trash",
+        "state": "Completed",
+        "closed": false,
+        "userId": "31"
+    },
+    {
+        "id": "63",
+        "todo": "Prepare a fun and engaging lesson plan: Brainstorm interactive activities to keep students interested.",
+        "state": "Working",
+        "closed": true,
+        "userId": "32"
+    },
+    {
+        "id": "64",
+        "todo": "Grade recent assignments: Provide constructive feedback to help students improve.",
+        "state": "Working",
+        "closed": true,
+        "userId": "32"
+    },
+    {
+        "id": "65",
+        "todo": "Exercise routine",
+        "state": "Pending",
+        "closed": false,
+        "userId": "33"
+    },
+    {
+        "id": "66",
+        "todo": "Practice meditation",
+        "state": "Completed",
+        "closed": true,
+        "userId": "33"
+    },
+    {
+        "id": "67",
+        "todo": "Write in a journal",
+        "state": "Pending",
+        "closed": true,
+        "userId": "34"
+    },
+    {
+        "id": "68",
+        "todo": "Clean the room",
+        "state": "Working",
+        "closed": true,
+        "userId": "34"
+    },
+    {
+        "id": "69",
+        "todo": "Call a friend or family member",
+        "state": "Working",
+        "closed": true,
+        "userId": "35"
+    },
+    {
+        "id": "70",
+        "todo": "Learn a new skill",
+        "state": "Working",
+        "closed": true,
+        "userId": "35"
+    },
+    {
+        "id": "71",
+        "todo": "Organize desk/workspace",
+        "state": "Completed",
+        "closed": true,
+        "userId": "36"
+    },
+    {
+        "id": "72",
+        "todo": "Cook a healthy meal",
+        "state": "Completed",
+        "closed": true,
+        "userId": "36"
+    },
+    {
+        "id": "73",
+        "todo": "Create a dance routine to your favorite song: Channel your inner choreographer and put together a sequence of moves you can show off.",
+        "state": "Pending",
+        "closed": true,
+        "userId": "37"
+    },
+    {
+        "id": "74",
+        "todo": "Learn a traditional dance: Explore different cultures by learning a basic step from a cultural dance like salsa or flamenco.",
+        "state": "Pending",
+        "closed": true,
+        "userId": "37"
+    },
+    {
+        "id": "75",
+        "todo": "Host a dance party for one: Put on your favorite playlist, clear some space, and unleash your inner dancer with uninhibited joy.",
+        "state": "Pending",
+        "closed": true,
+        "userId": "38"
+    },
+    {
+        "id": "76",
+        "todo": "Paint with unconventional tools: Explore using unconventional tools like sponges, leaves, or even your fingers to create textures and patterns.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "38"
+    },
+    {
+        "id": "77",
+        "todo": "Blind contour drawing challenge: Look at your subject for a few seconds, then close your eyes and draw its outline, capturing the essence without relying on perfect vision.",
+        "state": "Working",
+        "closed": false,
+        "userId": "39"
+    },
+    {
+        "id": "78",
+        "todo": "Color swap challenge: Pick a painting and swap all the colors to create an entirely different mood and atmosphere.",
+        "state": "Completed",
+        "closed": true,
+        "userId": "39"
+    },
+    {
+        "id": "79",
+        "todo": "Organize a backyard sports tournament: Invite friends and family for a friendly competition with classic games like badminton or frisbee.",
+        "state": "Pending",
+        "closed": true,
+        "userId": "40"
+    },
+    {
+        "id": "80",
+        "todo": "Try a new workout routine: Research and experiment with a different workout style like yoga, HIIT, or Pilates.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "40"
+    },
+    {
+        "id": "81",
+        "todo": "Go for a scavenger hunt run: Create a list of items to find on your running route, adding a fun element to your exercise.",
+        "state": "Working",
+        "closed": false,
+        "userId": "41"
+    },
+    {
+        "id": "82",
+        "todo": "Dance on a canvas: Put on some music, dip your feet in non-toxic paint, and express yourself through movement on a large canvas. Create a unique piece of art that captures the energy of your dance.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "41"
+    },
+    {
+        "id": "83",
+        "todo": "Help a beginner gamer learn the ropes: Share your knowledge and guide them through the basics.",
+        "state": "Working",
+        "closed": false,
+        "userId": "42"
+    },
+    {
+        "id": "84",
+        "todo": "Take a break from gaming: Disconnect and recharge your energy for the next adventure.",
+        "state": "Working",
+        "closed": true,
+        "userId": "42"
+    },
+    {
+        "id": "85",
+        "todo": "Read a book on architectural theory: Enhance your understanding of design principles.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "43"
+    },
+    {
+        "id": "86",
+        "todo": "Balance a new chemical equation: Challenge yourself with a complex reaction.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "43"
+    },
+    {
+        "id": "87",
+        "todo": "Sketch a new design concept: Explore creative ideas for a future project.",
+        "state": "Completed",
+        "closed": true,
+        "userId": "44"
+    },
+    {
+        "id": "88",
+        "todo": "Research sustainable building materials: Learn about eco-friendly options for construction.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "44"
+    },
+    {
+        "id": "89",
+        "todo": "Read a patient's favorite book aloud: Offer comfort and familiarity during a difficult time.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "45"
+    },
+    {
+        "id": "90",
+        "todo": "Analyze a poem's symbolism: Explore the deeper meaning hidden within the poem's imagery.",
+        "state": "Working",
+        "closed": true,
+        "userId": "45"
+    },
+    {
+        "id": "91",
+        "todo": "Review safety protocols: Ensure a safe and responsible environment for conducting experiments.",
+        "state": "Working",
+        "closed": true,
+        "userId": "46"
+    },
+    {
+        "id": "92",
+        "todo": "Plan a science experiment for kids: Spark their curiosity and introduce them to the world of chemistry.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "46"
+    },
+    {
+        "id": "93",
+        "todo": "Research a new medical treatment: Keep informed about the latest advancements in healthcare.",
+        "state": "Completed",
+        "closed": false,
+        "userId": "47"
+    },
+    {
+        "id": "94",
+        "todo": "Write a short story inspired by a real-life experience: Transform a personal event into a captivating narrative.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "47"
+    },
+    {
+        "id": "95",
+        "todo": "Host a book club meeting online: Discuss a chosen book with friends and share different perspectives.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "48"
+    },
+    {
+        "id": "96",
+        "todo": "Try a new genre: Step outside your comfort zone and explore a genre you haven't read before.",
+        "state": "Pending",
+        "closed": true,
+        "userId": "48"
+    },
+    {
+        "id": "97",
+        "todo": "Learn a new language through literature: Read a book in a language you're learning to improve vocabulary.",
+        "state": "Completed",
+        "closed": true,
+        "userId": "49"
+    },
+    {
+        "id": "98",
+        "todo": "Write a letter to your favorite fictional character: Share your thoughts and feelings as if they were real.",
+        "state": "Pending",
+        "closed": false,
+        "userId": "49"
+    },
+    {
+        "id": "99",
+        "todo": "Practice communication skills: Role-play difficult conversations with colleagues to improve communication effectiveness.",
+        "state": "Pending",
+        "closed": true,
+        "userId": "50"
+    },
+    {
+        "id": "100",
+        "todo": "Organize a patient support group: Facilitate a safe space for patients to connect and share experiences.",
+        "state": "Working",
+        "closed": true,
+        "userId": "50"
+    }
+]

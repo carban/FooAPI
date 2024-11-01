@@ -25,9 +25,9 @@ func main() {
 
 	api := router.Group("/api")
 	{
-		api.GET("/albums", routes.GetAlbums)
-		api.GET("/albums/:id", routes.GetAlbumByID)
-		api.POST("/albums", routes.PostAlbums)
+		//api.GET("/albums", routes.GetAlbums)
+		//api.GET("/albums/:id", routes.GetAlbumByID)
+		// api.POST("/albums", routes.PostAlbums)
 		api.GET("/geo", func(ctx *gin.Context) {
 			fc := geojson.NewFeatureCollection()
 			fc.AddFeature(geojson.NewPointFeature([]float64{1, 2}))
@@ -39,11 +39,20 @@ func main() {
 			}
 			ctx.IndentedJSON(http.StatusOK, fc)
 		})
-		api.GET("/redis", routes.Redis("albums"))
-		api.GET("/users", routes.Redis("users"))
-		api.GET("/posts", routes.Redis("posts"))
-		api.GET("/users/:id", routes.RedisById("users"))
-	}
 
+		categories := []string{"albums", "users", "posts", "comments", "products", "todos", "movies"}
+
+		for _, category := range categories {
+			api.GET("/"+category, routes.Redis(category))
+			api.GET("/"+category+"/:id", routes.RedisById(category))
+			api.GET("/"+category+"/rand", routes.RandRedis(category))
+			api.PUT("/"+category+"/:id", routes.PutRedisById(category))
+			api.PATCH("/"+category+"/:id", routes.PatchRedisById(category))
+			api.POST("/"+category, routes.PostRedis(category))
+			api.DELETE("/"+category+"/:id", routes.DeleteRedisById(category))
+		}
+		api.GET("/capitals", routes.GeoRedis())
+		api.GET("/capitals/:id", routes.GeoRedisById())
+	}
 	router.Run("localhost:8080")
 }

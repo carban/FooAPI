@@ -43,7 +43,7 @@ func (r *queryResolver) Albums(ctx context.Context) ([]*model.Album, error) {
 	if err != nil {
 		return nil, nil
 	}
-	resObj := r.albums
+	var resObj []*model.Album
 	json.Unmarshal([]byte(obj), &resObj)
 	return resObj, nil
 }
