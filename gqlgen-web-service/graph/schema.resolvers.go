@@ -14,7 +14,25 @@ import (
 
 // CreateUser is the resolver for the createUser field.
 func (r *mutationResolver) CreateUser(ctx context.Context, input model.CreateUserInput) (*model.User, error) {
-	panic(fmt.Errorf("not implemented: CreateUser - createUser"))
+	arrayLength, err := rdb.JSONArrLen(ctx, "users_array", "$").Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+	resData := model.User{
+		ID:        strconv.Itoa(int(arrayLength[0]) + 1),
+		Name:      input.Name,
+		LastName:  input.LastName,
+		Username:  input.Username,
+		BirthDate: input.BirthDate,
+		Age:       input.Age,
+		Gender:    input.Gender,
+		Phone:     input.Phone,
+		Email:     input.Email,
+		Country:   input.Country,
+		Height:    input.Height,
+		Weight:    input.Weight,
+	}
+	return &resData, nil
 }
 
 // UpdateUser is the resolver for the updateUser field.
@@ -74,12 +92,25 @@ func (r *mutationResolver) UpdateUser(ctx context.Context, id string, input *mod
 
 // DeleteUser is the resolver for the deleteUser field.
 func (r *mutationResolver) DeleteUser(ctx context.Context, id string) (*model.User, error) {
-	panic(fmt.Errorf("not implemented: DeleteUser - deleteUser"))
+	return QueryResolver.User(&queryResolver{}, ctx, id)
 }
 
 // CreateAlbum is the resolver for the createAlbum field.
 func (r *mutationResolver) CreateAlbum(ctx context.Context, input *model.CreateAlbumInput) (*model.Album, error) {
-	panic(fmt.Errorf("not implemented: CreateAlbum - createAlbum"))
+	arrayLength, err := rdb.JSONArrLen(ctx, "albums_array", "$").Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+	resData := model.Album{
+		ID:               strconv.Itoa(int(arrayLength[0]) + 1),
+		Name:             input.Name,
+		Artists:          input.Artists,
+		IsExplicit:       input.IsExplicit,
+		DurationMs:       input.DurationMs,
+		AlbumName:        input.AlbumName,
+		AlbumReleaseDate: input.AlbumReleaseDate,
+	}
+	return &resData, nil
 }
 
 // UpdateAlbum is the resolver for the updateAlbum field.
@@ -124,12 +155,28 @@ func (r *mutationResolver) UpdateAlbum(ctx context.Context, id string, input *mo
 
 // DeleteAlbum is the resolver for the deleteAlbum field.
 func (r *mutationResolver) DeleteAlbum(ctx context.Context, id string) (*model.Album, error) {
-	panic(fmt.Errorf("not implemented: DeleteAlbum - deleteAlbum"))
+	return QueryResolver.Album(&queryResolver{}, ctx, id)
 }
 
 // CreatePost is the resolver for the createPost field.
 func (r *mutationResolver) CreatePost(ctx context.Context, input *model.CreatePostInput) (*model.Post, error) {
-	panic(fmt.Errorf("not implemented: CreatePost - createPost"))
+	arrayLength, err := rdb.JSONArrLen(ctx, "posts_array", "$").Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+	resData := model.Post{
+		ID:         strconv.Itoa(int(arrayLength[0]) + 1),
+		Title:      input.Title,
+		Content:    input.Content,
+		Visibility: input.Visibility,
+		Tags:       input.Tags,
+		User: &model.SmallUser{
+			Name:     input.User.Name,
+			LastName: input.User.LastName,
+			Username: input.User.Username,
+		},
+	}
+	return &resData, nil
 }
 
 // UpdatePost is the resolver for the updatePost field.
@@ -179,12 +226,27 @@ func (r *mutationResolver) UpdatePost(ctx context.Context, id string, input *mod
 
 // DeletePost is the resolver for the deletePost field.
 func (r *mutationResolver) DeletePost(ctx context.Context, id string) (*model.Post, error) {
-	panic(fmt.Errorf("not implemented: DeletePost - deletePost"))
+	return QueryResolver.Post(&queryResolver{}, ctx, id)
 }
 
 // CreateComment is the resolver for the createComment field.
 func (r *mutationResolver) CreateComment(ctx context.Context, input *model.CreateCommentInput) (*model.Comment, error) {
-	panic(fmt.Errorf("not implemented: CreateComment - createComment"))
+	arrayLength, err := rdb.JSONArrLen(ctx, "comments_array", "$").Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+	resData := model.Comment{
+		ID:        strconv.Itoa(int(arrayLength[0]) + 1),
+		Comment:   input.Comment,
+		Reactions: input.Reactions,
+		PostID:    input.PostID,
+		User: &model.SmallUser{
+			Name:     input.User.Name,
+			LastName: input.User.LastName,
+			Username: input.User.Username,
+		},
+	}
+	return &resData, nil
 }
 
 // UpdateComment is the resolver for the updateComment field.
@@ -231,12 +293,26 @@ func (r *mutationResolver) UpdateComment(ctx context.Context, id string, input *
 
 // DeleteComment is the resolver for the deleteComment field.
 func (r *mutationResolver) DeleteComment(ctx context.Context, id string) (*model.Comment, error) {
-	panic(fmt.Errorf("not implemented: DeleteComment - deleteComment"))
+	return QueryResolver.Comment(&queryResolver{}, ctx, id)
 }
 
 // CreateProduct is the resolver for the createProduct field.
 func (r *mutationResolver) CreateProduct(ctx context.Context, input *model.CreateProductInput) (*model.Product, error) {
-	panic(fmt.Errorf("not implemented: CreateProduct - createProduct"))
+	arrayLength, err := rdb.JSONArrLen(ctx, "products_array", "$").Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+	resData := model.Product{
+		ID:          strconv.Itoa(int(arrayLength[0]) + 1),
+		Title:       input.Title,
+		Description: input.Description,
+		Brand:       input.Brand,
+		Category:    input.Category,
+		Price:       input.Price,
+		Rating:      input.Rating,
+		Stock:       input.Stock,
+	}
+	return &resData, nil
 }
 
 // UpdateProduct is the resolver for the updateProduct field.
@@ -284,12 +360,23 @@ func (r *mutationResolver) UpdateProduct(ctx context.Context, id string, input *
 
 // DeleteProduct is the resolver for the deleteProduct field.
 func (r *mutationResolver) DeleteProduct(ctx context.Context, id string) (*model.Product, error) {
-	panic(fmt.Errorf("not implemented: DeleteProduct - deleteProduct"))
+	return QueryResolver.Product(&queryResolver{}, ctx, id)
 }
 
 // CreateTodo is the resolver for the createTodo field.
 func (r *mutationResolver) CreateTodo(ctx context.Context, input *model.CreateTodoInput) (*model.Todo, error) {
-	panic(fmt.Errorf("kernel panic"))
+	arrayLength, err := rdb.JSONArrLen(ctx, "todos_array", "$").Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+	resData := model.Todo{
+		ID:     strconv.Itoa(int(arrayLength[0]) + 1),
+		Todo:   input.Todo,
+		State:  input.State,
+		Closed: input.Closed,
+		UserID: input.UserID,
+	}
+	return &resData, nil
 }
 
 // UpdateTodo is the resolver for the updateTodo field.
@@ -328,12 +415,36 @@ func (r *mutationResolver) UpdateTodo(ctx context.Context, id string, input *mod
 
 // DeleteTodo is the resolver for the deleteTodo field.
 func (r *mutationResolver) DeleteTodo(ctx context.Context, id string) (*model.Todo, error) {
-	panic(fmt.Errorf("not implemented: DeleteTodo - deleteTodo"))
+	return QueryResolver.Todo(&queryResolver{}, ctx, id)
 }
 
 // CreateMovie is the resolver for the createMovie field.
 func (r *mutationResolver) CreateMovie(ctx context.Context, input *model.CreateMovieInput) (*model.Movie, error) {
-	panic(fmt.Errorf("not implemented: CreateMovie - createMovie"))
+	arrayLength, err := rdb.JSONArrLen(ctx, "movies_array", "$").Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+	resData := model.Movie{
+		ID:         strconv.Itoa(int(arrayLength[0]) + 1),
+		Title:      input.Title,
+		Year:       input.Year,
+		Rated:      input.Rated,
+		Released:   input.Released,
+		Runtime:    input.Runtime,
+		Genre:      input.Genre,
+		Director:   input.Director,
+		Writer:     input.Writer,
+		Actors:     input.Actors,
+		Plot:       input.Plot,
+		Language:   input.Language,
+		Country:    input.Country,
+		Awards:     input.Awards,
+		Poster:     input.Poster,
+		ImdbRating: input.ImdbRating,
+		ImdbID:     input.ImdbID,
+		BoxOffice:  input.BoxOffice,
+	}
+	return &resData, nil
 }
 
 // UpdateMovie is the resolver for the updateMovie field.
@@ -411,7 +522,7 @@ func (r *mutationResolver) UpdateMovie(ctx context.Context, id string, input *mo
 
 // DeleteMovie is the resolver for the deleteMovie field.
 func (r *mutationResolver) DeleteMovie(ctx context.Context, id string) (*model.Movie, error) {
-	panic(fmt.Errorf("not implemented: DeleteMovie - deleteMovie"))
+	return QueryResolver.Movie(&queryResolver{}, ctx, id)
 }
 
 // Albums is the resolver for the albums field.

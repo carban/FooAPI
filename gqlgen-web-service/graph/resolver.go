@@ -1,8 +1,6 @@
 package graph
 
 import (
-	"app/graph/model"
-
 	redis "github.com/redis/go-redis/v9"
 )
 
@@ -21,7 +19,4 @@ func init() {
 	})
 }
 
-type Resolver struct {
-	todos  []*model.Todo
-	albums []*model.Album
-}
+type Resolver struct{}
