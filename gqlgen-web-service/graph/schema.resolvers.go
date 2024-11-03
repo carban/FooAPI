@@ -7,34 +7,411 @@ package graph
 import (
 	"app/graph/model"
 	"context"
-	"crypto/rand"
 	"encoding/json"
 	"fmt"
-	"math/big"
+	"strconv"
 )
 
-// CreateTodo is the resolver for the createTodo field.
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
-	randNumber, _ := rand.Int(rand.Reader, big.NewInt(100))
-	todo := &model.Todo{
-		Text: input.Text,
-		ID:   fmt.Sprintf("T%d", randNumber),
-		User: &model.User{ID: input.UserID, Name: "user " + input.UserID},
-	}
-	r.todos = append(r.todos, todo)
-	return todo, nil
+// CreateUser is the resolver for the createUser field.
+func (r *mutationResolver) CreateUser(ctx context.Context, input model.CreateUserInput) (*model.User, error) {
+	panic(fmt.Errorf("not implemented: CreateUser - createUser"))
 }
 
-// Todos is the resolver for the todos field.
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	obj, err := rdb.JSONGet(ctx, "foo2").Result()
-	if err != nil {
-		return nil, nil
+// UpdateUser is the resolver for the updateUser field.
+func (r *mutationResolver) UpdateUser(ctx context.Context, id string, input *model.UpdateUserInput) (*model.User, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
 	}
-	resObj := r.todos
-	json.Unmarshal([]byte(obj), &resObj)
-	return resObj, nil
-	// return r.todos, nil
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "users_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	var resData model.User
+	if err := json.Unmarshal([]byte(obj), &resData); err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	if input.Name != nil {
+		resData.Name = *input.Name
+	}
+	if input.LastName != nil {
+		resData.LastName = *input.LastName
+	}
+	if input.Username != nil {
+		resData.Username = *input.Username
+	}
+	if input.BirthDate != nil {
+		resData.BirthDate = *input.BirthDate
+	}
+	if input.Age != nil {
+		resData.Age = *input.Age
+	}
+	if input.Gender != nil {
+		resData.Gender = *input.Gender
+	}
+	if input.Phone != nil {
+		resData.Phone = *input.Phone
+	}
+	if input.Email != nil {
+		resData.Email = *input.Email
+	}
+	if input.Country != nil {
+		resData.Country = *input.Country
+	}
+	if input.Height != nil {
+		resData.Height = *input.Height
+	}
+	if input.Weight != nil {
+		resData.Weight = *input.Weight
+	}
+	return &resData, nil
+}
+
+// DeleteUser is the resolver for the deleteUser field.
+func (r *mutationResolver) DeleteUser(ctx context.Context, id string) (*model.User, error) {
+	panic(fmt.Errorf("not implemented: DeleteUser - deleteUser"))
+}
+
+// CreateAlbum is the resolver for the createAlbum field.
+func (r *mutationResolver) CreateAlbum(ctx context.Context, input *model.CreateAlbumInput) (*model.Album, error) {
+	panic(fmt.Errorf("not implemented: CreateAlbum - createAlbum"))
+}
+
+// UpdateAlbum is the resolver for the updateAlbum field.
+func (r *mutationResolver) UpdateAlbum(ctx context.Context, id string, input *model.UpdateAlbumInput) (*model.Album, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "albums_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	var resData model.Album
+	if err := json.Unmarshal([]byte(obj), &resData); err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	if input.Name != nil {
+		resData.Name = *input.Name
+	}
+	if input.Artists != nil {
+		resData.Artists = *input.Artists
+	}
+	if input.IsExplicit != nil {
+		resData.IsExplicit = *input.IsExplicit
+	}
+	if input.DurationMs != nil {
+		resData.DurationMs = *input.DurationMs
+	}
+	if input.AlbumName != nil {
+		resData.AlbumName = *input.AlbumName
+	}
+	if input.AlbumReleaseDate != nil {
+		resData.AlbumReleaseDate = *input.AlbumReleaseDate
+	}
+	return &resData, nil
+}
+
+// DeleteAlbum is the resolver for the deleteAlbum field.
+func (r *mutationResolver) DeleteAlbum(ctx context.Context, id string) (*model.Album, error) {
+	panic(fmt.Errorf("not implemented: DeleteAlbum - deleteAlbum"))
+}
+
+// CreatePost is the resolver for the createPost field.
+func (r *mutationResolver) CreatePost(ctx context.Context, input *model.CreatePostInput) (*model.Post, error) {
+	panic(fmt.Errorf("not implemented: CreatePost - createPost"))
+}
+
+// UpdatePost is the resolver for the updatePost field.
+func (r *mutationResolver) UpdatePost(ctx context.Context, id string, input *model.UpdatePostInput) (*model.Post, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "posts_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	var resData model.Post
+	if err := json.Unmarshal([]byte(obj), &resData); err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	if input.Title != nil {
+		resData.Title = *input.Title
+	}
+	if input.Content != nil {
+		resData.Content = *input.Content
+	}
+	if input.Visibility != nil {
+		resData.Visibility = *input.Visibility
+	}
+	if input.Tags != nil {
+		resData.Tags = *&input.Tags
+	}
+	if input.User != nil {
+		if input.User.Name != nil {
+			resData.User.Name = *input.User.Name
+		}
+		if input.User.LastName != nil {
+			resData.User.LastName = *input.User.LastName
+		}
+		if input.User.Username != nil {
+			resData.User.Username = *input.User.Username
+		}
+	}
+	return &resData, nil
+}
+
+// DeletePost is the resolver for the deletePost field.
+func (r *mutationResolver) DeletePost(ctx context.Context, id string) (*model.Post, error) {
+	panic(fmt.Errorf("not implemented: DeletePost - deletePost"))
+}
+
+// CreateComment is the resolver for the createComment field.
+func (r *mutationResolver) CreateComment(ctx context.Context, input *model.CreateCommentInput) (*model.Comment, error) {
+	panic(fmt.Errorf("not implemented: CreateComment - createComment"))
+}
+
+// UpdateComment is the resolver for the updateComment field.
+func (r *mutationResolver) UpdateComment(ctx context.Context, id string, input *model.UpdateCommentInput) (*model.Comment, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "comments_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	var resData model.Comment
+	if err := json.Unmarshal([]byte(obj), &resData); err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	if input.Comment != nil {
+		resData.Comment = *input.Comment
+	}
+	if input.Reactions != nil {
+		resData.Reactions = *input.Reactions
+	}
+	if input.PostID != nil {
+		resData.PostID = *input.PostID
+	}
+	if input.User != nil {
+		if input.User.Name != nil {
+			resData.User.Name = *input.User.Name
+		}
+		if input.User.LastName != nil {
+			resData.User.LastName = *input.User.LastName
+		}
+		if input.User.Username != nil {
+			resData.User.Username = *input.User.Username
+		}
+	}
+	return &resData, nil
+}
+
+// DeleteComment is the resolver for the deleteComment field.
+func (r *mutationResolver) DeleteComment(ctx context.Context, id string) (*model.Comment, error) {
+	panic(fmt.Errorf("not implemented: DeleteComment - deleteComment"))
+}
+
+// CreateProduct is the resolver for the createProduct field.
+func (r *mutationResolver) CreateProduct(ctx context.Context, input *model.CreateProductInput) (*model.Product, error) {
+	panic(fmt.Errorf("not implemented: CreateProduct - createProduct"))
+}
+
+// UpdateProduct is the resolver for the updateProduct field.
+func (r *mutationResolver) UpdateProduct(ctx context.Context, id string, input *model.UpdateProductInput) (*model.Product, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "products_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	var resData model.Product
+	if err := json.Unmarshal([]byte(obj), &resData); err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	if input.Title != nil {
+		resData.Title = *input.Title
+	}
+	if input.Description != nil {
+		resData.Description = *input.Description
+	}
+	if input.Brand != nil {
+		resData.Brand = *input.Brand
+	}
+	if input.Category != nil {
+		resData.Category = *input.Category
+	}
+	if input.Price != nil {
+		resData.Price = *input.Price
+	}
+	if input.Rating != nil {
+		resData.Rating = *input.Rating
+	}
+	if input.Stock != nil {
+		resData.Stock = *input.Stock
+	}
+	return &resData, nil
+}
+
+// DeleteProduct is the resolver for the deleteProduct field.
+func (r *mutationResolver) DeleteProduct(ctx context.Context, id string) (*model.Product, error) {
+	panic(fmt.Errorf("not implemented: DeleteProduct - deleteProduct"))
+}
+
+// CreateTodo is the resolver for the createTodo field.
+func (r *mutationResolver) CreateTodo(ctx context.Context, input *model.CreateTodoInput) (*model.Todo, error) {
+	panic(fmt.Errorf("kernel panic"))
+}
+
+// UpdateTodo is the resolver for the updateTodo field.
+func (r *mutationResolver) UpdateTodo(ctx context.Context, id string, input *model.UpdateTodoInput) (*model.Todo, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "todos_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	var resData model.Todo
+	if err := json.Unmarshal([]byte(obj), &resData); err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	if input.Todo != nil {
+		resData.Todo = *input.Todo
+	}
+	if input.State != nil {
+		resData.State = *input.State
+	}
+	if input.Closed != nil {
+		resData.Closed = *input.Closed
+	}
+	if input.UserID != nil {
+		resData.UserID = *input.UserID
+	}
+	return &resData, nil
+}
+
+// DeleteTodo is the resolver for the deleteTodo field.
+func (r *mutationResolver) DeleteTodo(ctx context.Context, id string) (*model.Todo, error) {
+	panic(fmt.Errorf("not implemented: DeleteTodo - deleteTodo"))
+}
+
+// CreateMovie is the resolver for the createMovie field.
+func (r *mutationResolver) CreateMovie(ctx context.Context, input *model.CreateMovieInput) (*model.Movie, error) {
+	panic(fmt.Errorf("not implemented: CreateMovie - createMovie"))
+}
+
+// UpdateMovie is the resolver for the updateMovie field.
+func (r *mutationResolver) UpdateMovie(ctx context.Context, id string, input *model.UpdateMovieInput) (*model.Movie, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "movies_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	var resData model.Movie
+	if err := json.Unmarshal([]byte(obj), &resData); err != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
+
+	if input.Title != nil {
+		resData.Title = *input.Title
+	}
+	if input.Year != nil {
+		resData.Year = *input.Year
+	}
+	if input.Rated != nil {
+		resData.Rated = *input.Rated
+	}
+	if input.Released != nil {
+		resData.Released = *input.Released
+	}
+	if input.Runtime != nil {
+		resData.Runtime = *input.Runtime
+	}
+	if input.Genre != nil {
+		resData.Genre = *input.Genre
+	}
+	if input.Director != nil {
+		resData.Director = *input.Director
+	}
+	if input.Writer != nil {
+		resData.Writer = *input.Writer
+	}
+	if input.Actors != nil {
+		resData.Actors = *input.Actors
+	}
+	if input.Plot != nil {
+		resData.Plot = *input.Plot
+	}
+	if input.Language != nil {
+		resData.Language = *input.Language
+	}
+	if input.Country != nil {
+		resData.Country = *input.Country
+	}
+	if input.Awards != nil {
+		resData.Awards = *input.Awards
+	}
+	if input.Poster != nil {
+		resData.Poster = *input.Poster
+	}
+	if input.ImdbRating != nil {
+		resData.ImdbRating = *input.ImdbRating
+	}
+	if input.ImdbID != nil { // Note the casing change for consistency
+		resData.ImdbID = *input.ImdbID
+	}
+	if input.BoxOffice != nil {
+		resData.BoxOffice = *input.BoxOffice
+	}
+	return &resData, nil
+}
+
+// DeleteMovie is the resolver for the deleteMovie field.
+func (r *mutationResolver) DeleteMovie(ctx context.Context, id string) (*model.Movie, error) {
+	panic(fmt.Errorf("not implemented: DeleteMovie - deleteMovie"))
 }
 
 // Albums is the resolver for the albums field.
@@ -48,15 +425,217 @@ func (r *queryResolver) Albums(ctx context.Context) ([]*model.Album, error) {
 	return resObj, nil
 }
 
-// SearchAlbums is the resolver for the searchAlbums field.
-func (r *queryResolver) SearchAlbums(ctx context.Context, id *string) (*model.Album, error) {
-	obj, err := rdb.JSONGet(ctx, "albums_array", "["+*id+"]").Result()
+// Users is the resolver for the users field.
+func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
+	obj, err := rdb.JSONGet(ctx, "users_array").Result()
 	if err != nil {
 		return nil, nil
 	}
-	resObj := model.Album{}
+	var resObj []*model.User
 	json.Unmarshal([]byte(obj), &resObj)
-	return &resObj, nil
+	return resObj, nil
+}
+
+// Posts is the resolver for the posts field.
+func (r *queryResolver) Posts(ctx context.Context) ([]*model.Post, error) {
+	obj, err := rdb.JSONGet(ctx, "posts_array").Result()
+	if err != nil {
+		return nil, nil
+	}
+	var resObj []*model.Post
+	json.Unmarshal([]byte(obj), &resObj)
+	return resObj, nil
+}
+
+// Comments is the resolver for the comments field.
+func (r *queryResolver) Comments(ctx context.Context) ([]*model.Comment, error) {
+	obj, err := rdb.JSONGet(ctx, "comments_array").Result()
+	if err != nil {
+		return nil, nil
+	}
+	var resObj []*model.Comment
+	json.Unmarshal([]byte(obj), &resObj)
+	return resObj, nil
+}
+
+// Products is the resolver for the products field.
+func (r *queryResolver) Products(ctx context.Context) ([]*model.Product, error) {
+	obj, err := rdb.JSONGet(ctx, "products_array").Result()
+	if err != nil {
+		return nil, nil
+	}
+	var resObj []*model.Product
+	json.Unmarshal([]byte(obj), &resObj)
+	return resObj, nil
+}
+
+// Todos is the resolver for the todos field.
+func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
+	obj, err := rdb.JSONGet(ctx, "todos_array").Result()
+	if err != nil {
+		return nil, nil
+	}
+	var resObj []*model.Todo
+	json.Unmarshal([]byte(obj), &resObj)
+	return resObj, nil
+}
+
+// Movies is the resolver for the movies field.
+func (r *queryResolver) Movies(ctx context.Context) ([]*model.Movie, error) {
+	obj, err := rdb.JSONGet(ctx, "movies_array").Result()
+	if err != nil {
+		return nil, nil
+	}
+	var resObj []*model.Movie
+	json.Unmarshal([]byte(obj), &resObj)
+	return resObj, nil
+}
+
+// Album is the resolver for the album field.
+func (r *queryResolver) Album(ctx context.Context, id string) (*model.Album, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "albums_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch: %w", err)
+	}
+	var res model.Album
+	err = json.Unmarshal([]byte(obj), &res)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse: %w", err)
+	}
+	return &res, nil
+}
+
+// User is the resolver for the user field.
+func (r *queryResolver) User(ctx context.Context, id string) (*model.User, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "users_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch: %w", err)
+	}
+	var res model.User
+	err = json.Unmarshal([]byte(obj), &res)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse: %w", err)
+	}
+	return &res, nil
+}
+
+// Post is the resolver for the post field.
+func (r *queryResolver) Post(ctx context.Context, id string) (*model.Post, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "posts_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch: %w", err)
+	}
+	var res model.Post
+	err = json.Unmarshal([]byte(obj), &res)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse: %w", err)
+	}
+	return &res, nil
+}
+
+// Comment is the resolver for the comment field.
+func (r *queryResolver) Comment(ctx context.Context, id string) (*model.Comment, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "comments_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch: %w", err)
+	}
+	var res model.Comment
+	err = json.Unmarshal([]byte(obj), &res)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse: %w", err)
+	}
+	return &res, nil
+}
+
+// Product is the resolver for the product field.
+func (r *queryResolver) Product(ctx context.Context, id string) (*model.Product, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "products_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch: %w", err)
+	}
+	var res model.Product
+	err = json.Unmarshal([]byte(obj), &res)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse: %w", err)
+	}
+	return &res, nil
+}
+
+// Todo is the resolver for the todo field.
+func (r *queryResolver) Todo(ctx context.Context, id string) (*model.Todo, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "todos_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch: %w", err)
+	}
+	var res model.Todo
+	err = json.Unmarshal([]byte(obj), &res)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse: %w", err)
+	}
+	return &res, nil
+}
+
+// Movie is the resolver for the movie field.
+func (r *queryResolver) Movie(ctx context.Context, id string) (*model.Movie, error) {
+	idInt, convErr := strconv.Atoi(id)
+	if convErr != nil {
+		return nil, fmt.Errorf("invalid ID")
+	}
+	if idInt <= 0 {
+		return nil, fmt.Errorf("ID must be positive")
+	}
+	obj, err := rdb.JSONGet(ctx, "movies_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch: %w", err)
+	}
+	var res model.Movie
+	err = json.Unmarshal([]byte(obj), &res)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse: %w", err)
+	}
+	return &res, nil
 }
 
 // Mutation returns MutationResolver implementation.

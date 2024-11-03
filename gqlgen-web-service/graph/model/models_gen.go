@@ -3,31 +3,259 @@
 package model
 
 type Album struct {
-	ID     string  `json:"id"`
-	Title  string  `json:"title"`
-	Artist string  `json:"artist"`
-	Price  float64 `json:"price"`
+	ID               string `json:"id"`
+	Name             string `json:"name"`
+	Artists          string `json:"artists"`
+	IsExplicit       bool   `json:"isExplicit"`
+	DurationMs       int    `json:"durationMs"`
+	AlbumName        string `json:"albumName"`
+	AlbumReleaseDate string `json:"albumReleaseDate"`
+}
+
+type Comment struct {
+	ID        string     `json:"id"`
+	Comment   string     `json:"comment"`
+	Reactions int        `json:"reactions"`
+	PostID    string     `json:"postId"`
+	User      *SmallUser `json:"user"`
+}
+
+type CreateAlbumInput struct {
+	Name             string `json:"name"`
+	Artists          string `json:"artists"`
+	IsExplicit       bool   `json:"isExplicit"`
+	DurationMs       int    `json:"durationMs"`
+	AlbumName        string `json:"albumName"`
+	AlbumReleaseDate string `json:"albumReleaseDate"`
+}
+
+type CreateCommentInput struct {
+	Comment   string                `json:"comment"`
+	Reactions int                   `json:"reactions"`
+	PostID    string                `json:"postId"`
+	User      *CreateSmallUserInput `json:"user"`
+}
+
+type CreateMovieInput struct {
+	Title      string `json:"title"`
+	Year       string `json:"year"`
+	Rated      string `json:"rated"`
+	Released   string `json:"released"`
+	Runtime    string `json:"runtime"`
+	Genre      string `json:"genre"`
+	Director   string `json:"director"`
+	Writer     string `json:"writer"`
+	Actors     string `json:"actors"`
+	Plot       string `json:"plot"`
+	Language   string `json:"language"`
+	Country    string `json:"country"`
+	Awards     string `json:"awards"`
+	Poster     string `json:"poster"`
+	ImdbRating string `json:"imdbRating"`
+	ImdbID     string `json:"imdbId"`
+	BoxOffice  string `json:"boxOffice"`
+}
+
+type CreatePostInput struct {
+	Title      string                `json:"title"`
+	Content    string                `json:"content"`
+	Visibility string                `json:"visibility"`
+	Tags       []string              `json:"tags"`
+	User       *CreateSmallUserInput `json:"user"`
+}
+
+type CreateProductInput struct {
+	Title       string  `json:"title"`
+	Description string  `json:"description"`
+	Brand       string  `json:"brand"`
+	Category    string  `json:"category"`
+	Price       float64 `json:"price"`
+	Rating      float64 `json:"rating"`
+	Stock       int     `json:"stock"`
+}
+
+type CreateSmallUserInput struct {
+	Name     string `json:"name"`
+	LastName string `json:"lastName"`
+	Username string `json:"username"`
+}
+
+type CreateTodoInput struct {
+	Todo   string `json:"todo"`
+	State  string `json:"state"`
+	Closed bool   `json:"closed"`
+	UserID string `json:"userId"`
+}
+
+type CreateUserInput struct {
+	Name      string  `json:"name"`
+	LastName  string  `json:"lastName"`
+	Username  string  `json:"username"`
+	BirthDate string  `json:"birthDate"`
+	Age       int     `json:"age"`
+	Gender    string  `json:"gender"`
+	Phone     string  `json:"phone"`
+	Email     string  `json:"email"`
+	Country   string  `json:"country"`
+	Height    int     `json:"height"`
+	Weight    float64 `json:"weight"`
+}
+
+type Movie struct {
+	ID         string `json:"id"`
+	Title      string `json:"title"`
+	Year       string `json:"year"`
+	Rated      string `json:"rated"`
+	Released   string `json:"released"`
+	Runtime    string `json:"runtime"`
+	Genre      string `json:"genre"`
+	Director   string `json:"director"`
+	Writer     string `json:"writer"`
+	Actors     string `json:"actors"`
+	Plot       string `json:"plot"`
+	Language   string `json:"language"`
+	Country    string `json:"country"`
+	Awards     string `json:"awards"`
+	Poster     string `json:"poster"`
+	ImdbRating string `json:"imdbRating"`
+	ImdbID     string `json:"imdbId"`
+	BoxOffice  string `json:"boxOffice"`
 }
 
 type Mutation struct {
 }
 
-type NewTodo struct {
-	Text   string `json:"text"`
-	UserID string `json:"userId"`
+type Post struct {
+	ID         string     `json:"id"`
+	Title      string     `json:"title"`
+	Content    string     `json:"content"`
+	Visibility string     `json:"visibility"`
+	Tags       []string   `json:"tags"`
+	Reactions  int        `json:"reactions"`
+	User       *SmallUser `json:"user"`
+}
+
+type Product struct {
+	ID          string  `json:"id"`
+	Title       string  `json:"title"`
+	Description string  `json:"description"`
+	Brand       string  `json:"brand"`
+	Category    string  `json:"category"`
+	Price       float64 `json:"price"`
+	Rating      float64 `json:"rating"`
+	Stock       int     `json:"stock"`
 }
 
 type Query struct {
 }
 
+type SmallUser struct {
+	ID       string `json:"id"`
+	Name     string `json:"name"`
+	LastName string `json:"lastName"`
+	Username string `json:"username"`
+}
+
 type Todo struct {
-	ID   string `json:"id"`
-	Text string `json:"text"`
-	Done bool   `json:"done"`
-	User *User  `json:"user"`
+	ID     string `json:"id"`
+	Todo   string `json:"todo"`
+	State  string `json:"state"`
+	Closed bool   `json:"closed"`
+	UserID string `json:"userId"`
+}
+
+type UpdateAlbumInput struct {
+	Name             *string `json:"name,omitempty"`
+	Artists          *string `json:"artists,omitempty"`
+	IsExplicit       *bool   `json:"isExplicit,omitempty"`
+	DurationMs       *int    `json:"durationMs,omitempty"`
+	AlbumName        *string `json:"albumName,omitempty"`
+	AlbumReleaseDate *string `json:"albumReleaseDate,omitempty"`
+}
+
+type UpdateCommentInput struct {
+	Comment   *string               `json:"comment,omitempty"`
+	Reactions *int                  `json:"reactions,omitempty"`
+	PostID    *string               `json:"postId,omitempty"`
+	User      *UpdateSmallUserInput `json:"user,omitempty"`
+}
+
+type UpdateMovieInput struct {
+	Title      *string `json:"title,omitempty"`
+	Year       *string `json:"year,omitempty"`
+	Rated      *string `json:"rated,omitempty"`
+	Released   *string `json:"released,omitempty"`
+	Runtime    *string `json:"runtime,omitempty"`
+	Genre      *string `json:"genre,omitempty"`
+	Director   *string `json:"director,omitempty"`
+	Writer     *string `json:"writer,omitempty"`
+	Actors     *string `json:"actors,omitempty"`
+	Plot       *string `json:"plot,omitempty"`
+	Language   *string `json:"language,omitempty"`
+	Country    *string `json:"country,omitempty"`
+	Awards     *string `json:"awards,omitempty"`
+	Poster     *string `json:"poster,omitempty"`
+	ImdbRating *string `json:"imdbRating,omitempty"`
+	ImdbID     *string `json:"imdbId,omitempty"`
+	BoxOffice  *string `json:"boxOffice,omitempty"`
+}
+
+type UpdatePostInput struct {
+	Title      *string               `json:"title,omitempty"`
+	Content    *string               `json:"content,omitempty"`
+	Visibility *string               `json:"visibility,omitempty"`
+	Tags       []string              `json:"tags,omitempty"`
+	User       *UpdateSmallUserInput `json:"user,omitempty"`
+}
+
+type UpdateProductInput struct {
+	Title       *string  `json:"title,omitempty"`
+	Description *string  `json:"description,omitempty"`
+	Brand       *string  `json:"brand,omitempty"`
+	Category    *string  `json:"category,omitempty"`
+	Price       *float64 `json:"price,omitempty"`
+	Rating      *float64 `json:"rating,omitempty"`
+	Stock       *int     `json:"stock,omitempty"`
+}
+
+type UpdateSmallUserInput struct {
+	Name     *string `json:"name,omitempty"`
+	LastName *string `json:"lastName,omitempty"`
+	Username *string `json:"username,omitempty"`
+}
+
+type UpdateTodoInput struct {
+	Todo   *string `json:"todo,omitempty"`
+	State  *string `json:"state,omitempty"`
+	Closed *bool   `json:"closed,omitempty"`
+	UserID *string `json:"userId,omitempty"`
+}
+
+type UpdateUserInput struct {
+	Name      *string  `json:"name,omitempty"`
+	LastName  *string  `json:"lastName,omitempty"`
+	Username  *string  `json:"username,omitempty"`
+	BirthDate *string  `json:"birthDate,omitempty"`
+	Age       *int     `json:"age,omitempty"`
+	Gender    *string  `json:"gender,omitempty"`
+	Phone     *string  `json:"phone,omitempty"`
+	Email     *string  `json:"email,omitempty"`
+	Country   *string  `json:"country,omitempty"`
+	Height    *int     `json:"height,omitempty"`
+	Weight    *float64 `json:"weight,omitempty"`
 }
 
 type User struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+	ID        string  `json:"id"`
+	Name      string  `json:"name"`
+	LastName  string  `json:"lastName"`
+	Username  string  `json:"username"`
+	BirthDate string  `json:"birthDate"`
+	Age       int     `json:"age"`
+	Gender    string  `json:"gender"`
+	Phone     string  `json:"phone"`
+	Email     string  `json:"email"`
+	Country   string  `json:"country"`
+	Height    int     `json:"height"`
+	Weight    float64 `json:"weight"`
 }

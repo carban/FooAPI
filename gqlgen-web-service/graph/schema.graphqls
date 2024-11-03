@@ -2,36 +2,314 @@
 #
 # https://gqlgen.com/getting-started/
 
-type Todo {
-  id: ID!
-  text: String!
-  done: Boolean!
-  user: User!
+type Query {
+  albums: [Album!]!
+  users: [User!]!
+  posts: [Post!]!
+  comments: [Comment!]!
+  products: [Product!]!
+  todos: [Todo!]!
+  movies: [Movie!]!
+  album(id: ID!): Album
+  user(id: ID!): User
+  post(id: ID!): Post
+  comment(id: ID!): Comment
+  product(id: ID!): Product
+  todo(id: ID!): Todo
+  movie(id: ID!): Movie
 }
 
 type Album {
-    id: String!
-    title: String!
-    artist: String!
-    price: Float!
+  id: ID!
+  name: String!
+  artists: String!
+  isExplicit: Boolean!
+  durationMs: Int!
+  albumName: String!
+  albumReleaseDate: String!
 }
 
 type User {
   id: ID!
   name: String!
+  lastName: String!
+  username: String!
+  birthDate: String!
+  age: Int!
+  gender: String!
+  phone: String!
+  email: String!
+  country: String!
+  height: Int!
+  weight: Float!
 }
 
-type Query {
-  todos: [Todo!]!
-  albums: [Album!]!
-  searchAlbums(id: String): Album!
+type SmallUser {
+  id: ID!
+  name: String!
+  lastName: String!
+  username: String!
 }
 
-input NewTodo {
-  text: String!
+type Post {
+  id: ID!
+  title: String!
+  content: String!
+  visibility: String!
+  tags: [String!]!
+  reactions: Int!
+  user: SmallUser!
+}
+
+type Comment {
+  id: ID!
+  comment: String!
+  reactions: Int!
+  postId: String!
+  user: SmallUser!
+}
+
+type Product {
+  id: ID!
+  title: String!
+  description: String!
+  brand: String!
+  category: String!
+  price: Float!
+  rating: Float!
+  stock: Int!
+}
+
+type Todo {
+  id: ID!
+  todo: String!
+  state: String!
+  closed: Boolean!
   userId: String!
 }
 
+type Movie {
+  id: ID!
+  title: String!
+  year: String!
+  rated: String!
+  released: String!
+  runtime: String!
+  genre: String!
+  director: String!
+  writer: String!
+  actors: String!
+  plot: String!
+  language: String!
+  country: String!
+  awards: String!
+  poster: String!
+  imdbRating: String!
+  imdbId: String!
+  boxOffice: String!
+}
+
+# Creation Inputs -------------------------------------------------------------------------------------
+
+input CreateAlbumInput {
+  name: String!
+  artists: String!
+  isExplicit: Boolean!
+  durationMs: Int!
+  albumName: String!
+  albumReleaseDate: String!
+}
+
+input CreateUserInput {
+  name: String!
+  lastName: String!
+  username: String!
+  birthDate: String!
+  age: Int!
+  gender: String!
+  phone: String!
+  email: String!
+  country: String!
+  height: Int!
+  weight: Float!
+}
+
+input CreateSmallUserInput {
+  name: String!
+  lastName: String!
+  username: String!
+}
+
+input CreatePostInput {
+  title: String!
+  content: String!
+  visibility: String!
+  tags: [String!]!
+  user: CreateSmallUserInput!
+}
+
+input CreateCommentInput {
+  comment: String!
+  reactions: Int!
+  postId: String!
+  user: CreateSmallUserInput!
+}
+
+input CreateProductInput {
+  title: String!
+  description: String!
+  brand: String!
+  category: String!
+  price: Float!
+  rating: Float!
+  stock: Int!
+}
+
+input CreateTodoInput {
+  todo: String!
+  state: String!
+  closed: Boolean!
+  userId: String!
+}
+
+input CreateMovieInput {
+  title: String!
+  year: String!
+  rated: String!
+  released: String!
+  runtime: String!
+  genre: String!
+  director: String!
+  writer: String!
+  actors: String!
+  plot: String!
+  language: String!
+  country: String!
+  awards: String!
+  poster: String!
+  imdbRating: String!
+  imdbId: String!
+  boxOffice: String!
+}
+
+# Updating Inputs ------------------------------------------------------------------------------------- 
+
+input UpdateAlbumInput {
+  name: String
+  artists: String
+  isExplicit: Boolean
+  durationMs: Int
+  albumName: String
+  albumReleaseDate: String
+}
+
+input UpdateUserInput {
+  name: String
+  lastName: String
+  username: String
+  birthDate: String
+  age: Int
+  gender: String
+  phone: String
+  email: String
+  country: String
+  height: Int
+  weight: Float
+}
+
+input UpdateSmallUserInput {
+  name: String
+  lastName: String
+  username: String
+}
+
+input UpdatePostInput {
+  title: String
+  content: String
+  visibility: String
+  tags: [String!]
+  user: UpdateSmallUserInput
+}
+
+input UpdateCommentInput {
+  comment: String
+  reactions: Int
+  postId: String
+  user: UpdateSmallUserInput
+}
+
+input UpdateProductInput {
+  title: String
+  description: String
+  brand: String
+  category: String
+  price: Float
+  rating: Float
+  stock: Int
+}
+
+input UpdateTodoInput {
+  todo: String
+  state: String
+  closed: Boolean
+  userId: String
+}
+
+input UpdateMovieInput {
+  title: String
+  year: String
+  rated: String
+  released: String
+  runtime: String
+  genre: String
+  director: String
+  writer: String
+  actors: String
+  plot: String
+  language: String
+  country: String
+  awards: String
+  poster: String
+  imdbRating: String
+  imdbId: String
+  boxOffice: String
+}
+
+# Mutations -------------------------------------------------------------------------------------
+
 type Mutation {
-  createTodo(input: NewTodo!): Todo!
+  # User Mutations
+  createUser(input: CreateUserInput!): User!
+  updateUser(id: ID!, input: UpdateUserInput): User!
+  deleteUser(id: ID!): User!
+
+  # Album Mutations
+  createAlbum(input: CreateAlbumInput): Album!
+  updateAlbum(id: ID!, input: UpdateAlbumInput): Album!
+  deleteAlbum(id: ID!): Album!
+
+  # Post Mutations
+  createPost(input: CreatePostInput): Post!
+  updatePost(id: ID!, input: UpdatePostInput): Post!
+  deletePost(id: ID!): Post!
+
+  # Comment Mutations
+  createComment(input: CreateCommentInput): Comment!
+  updateComment(id: ID!, input: UpdateCommentInput): Comment!
+  deleteComment(id: ID!): Comment!
+
+  # Product Mutations
+  createProduct(input: CreateProductInput): Product!
+  updateProduct(id: ID!, input: UpdateProductInput): Product!
+  deleteProduct(id: ID!): Product!
+
+  # Todo Mutations
+  createTodo(input: CreateTodoInput): Todo!
+  updateTodo(id: ID!, input: UpdateTodoInput): Todo!
+  deleteTodo(id: ID!): Todo!
+
+  # Movie Mutations
+  createMovie(input: CreateMovieInput): Movie!
+  updateMovie(id: ID!, input: UpdateMovieInput): Movie!
+  deleteMovie(id: ID!): Movie!
 }
