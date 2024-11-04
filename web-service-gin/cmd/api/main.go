@@ -25,9 +25,6 @@ func main() {
 
 	api := router.Group("/api")
 	{
-		//api.GET("/albums", routes.GetAlbums)
-		//api.GET("/albums/:id", routes.GetAlbumByID)
-		// api.POST("/albums", routes.PostAlbums)
 		api.GET("/geo", func(ctx *gin.Context) {
 			fc := geojson.NewFeatureCollection()
 			fc.AddFeature(geojson.NewPointFeature([]float64{1, 2}))
@@ -40,7 +37,7 @@ func main() {
 			ctx.IndentedJSON(http.StatusOK, fc)
 		})
 
-		categories := []string{"albums", "users", "posts", "comments", "products", "todos", "movies"}
+		categories := []string{"songs", "users", "posts", "comments", "products", "todos", "movies"}
 
 		for _, category := range categories {
 			api.GET("/"+category, routes.Redis(category))

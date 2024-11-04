@@ -2,31 +2,12 @@
 
 package model
 
-type Album struct {
-	ID               string `json:"id"`
-	Name             string `json:"name"`
-	Artists          string `json:"artists"`
-	IsExplicit       bool   `json:"isExplicit"`
-	DurationMs       int    `json:"durationMs"`
-	AlbumName        string `json:"albumName"`
-	AlbumReleaseDate string `json:"albumReleaseDate"`
-}
-
 type Comment struct {
 	ID        string     `json:"id"`
 	Comment   string     `json:"comment"`
 	Reactions int        `json:"reactions"`
 	PostID    string     `json:"postId"`
 	User      *SmallUser `json:"user"`
-}
-
-type CreateAlbumInput struct {
-	Name             string `json:"name"`
-	Artists          string `json:"artists"`
-	IsExplicit       bool   `json:"isExplicit"`
-	DurationMs       int    `json:"durationMs"`
-	AlbumName        string `json:"albumName"`
-	AlbumReleaseDate string `json:"albumReleaseDate"`
 }
 
 type CreateCommentInput struct {
@@ -78,6 +59,15 @@ type CreateSmallUserInput struct {
 	Name     string `json:"name"`
 	LastName string `json:"lastName"`
 	Username string `json:"username"`
+}
+
+type CreateSongInput struct {
+	Name             string `json:"name"`
+	Artists          string `json:"artists"`
+	IsExplicit       bool   `json:"isExplicit"`
+	DurationMs       int    `json:"durationMs"`
+	AlbumName        string `json:"albumName"`
+	AlbumReleaseDate string `json:"albumReleaseDate"`
 }
 
 type CreateTodoInput struct {
@@ -156,21 +146,22 @@ type SmallUser struct {
 	Username string `json:"username"`
 }
 
+type Song struct {
+	ID               string `json:"id"`
+	Name             string `json:"name"`
+	Artists          string `json:"artists"`
+	IsExplicit       bool   `json:"isExplicit"`
+	DurationMs       int    `json:"durationMs"`
+	AlbumName        string `json:"albumName"`
+	AlbumReleaseDate string `json:"albumReleaseDate"`
+}
+
 type Todo struct {
 	ID     string `json:"id"`
 	Todo   string `json:"todo"`
 	State  string `json:"state"`
 	Closed bool   `json:"closed"`
 	UserID string `json:"userId"`
-}
-
-type UpdateAlbumInput struct {
-	Name             *string `json:"name,omitempty"`
-	Artists          *string `json:"artists,omitempty"`
-	IsExplicit       *bool   `json:"isExplicit,omitempty"`
-	DurationMs       *int    `json:"durationMs,omitempty"`
-	AlbumName        *string `json:"albumName,omitempty"`
-	AlbumReleaseDate *string `json:"albumReleaseDate,omitempty"`
 }
 
 type UpdateCommentInput struct {
@@ -222,6 +213,15 @@ type UpdateSmallUserInput struct {
 	Name     *string `json:"name,omitempty"`
 	LastName *string `json:"lastName,omitempty"`
 	Username *string `json:"username,omitempty"`
+}
+
+type UpdateSongInput struct {
+	Name             *string `json:"name,omitempty"`
+	Artists          *string `json:"artists,omitempty"`
+	IsExplicit       *bool   `json:"isExplicit,omitempty"`
+	DurationMs       *int    `json:"durationMs,omitempty"`
+	AlbumName        *string `json:"albumName,omitempty"`
+	AlbumReleaseDate *string `json:"albumReleaseDate,omitempty"`
 }
 
 type UpdateTodoInput struct {

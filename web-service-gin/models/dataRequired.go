@@ -1,7 +1,6 @@
 package models
 
-// album represents data about a record album.
-type AlbumReq struct {
+type SongReq struct {
 	ID               string `json:"id"`
 	Name             string `json:"name" binding:"required"`
 	Artists          string `json:"artists" binding:"required"`

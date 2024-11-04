@@ -3,14 +3,14 @@
 # https://gqlgen.com/getting-started/
 
 type Query {
-  albums: [Album!]!
+  songs: [Song!]!
   users: [User!]!
   posts: [Post!]!
   comments: [Comment!]!
   products: [Product!]!
   todos: [Todo!]!
   movies: [Movie!]!
-  album(id: ID!): Album
+  song(id: ID!): Song
   user(id: ID!): User
   post(id: ID!): Post
   comment(id: ID!): Comment
@@ -19,7 +19,7 @@ type Query {
   movie(id: ID!): Movie
 }
 
-type Album {
+type Song {
   id: ID!
   name: String!
   artists: String!
@@ -111,7 +111,7 @@ type Movie {
 
 # Creation Inputs -------------------------------------------------------------------------------------
 
-input CreateAlbumInput {
+input CreateSongInput {
   name: String!
   artists: String!
   isExplicit: Boolean!
@@ -194,7 +194,7 @@ input CreateMovieInput {
 
 # Updating Inputs ------------------------------------------------------------------------------------- 
 
-input UpdateAlbumInput {
+input UpdateSongInput {
   name: String
   artists: String
   isExplicit: Boolean
@@ -283,10 +283,10 @@ type Mutation {
   updateUser(id: ID!, input: UpdateUserInput): User!
   deleteUser(id: ID!): User!
 
-  # Album Mutations
-  createAlbum(input: CreateAlbumInput): Album!
-  updateAlbum(id: ID!, input: UpdateAlbumInput): Album!
-  deleteAlbum(id: ID!): Album!
+  # Song Mutations
+  createSong(input: CreateSongInput): Song!
+  updateSong(id: ID!, input: UpdateSongInput): Song!
+  deleteSong(id: ID!): Song!
 
   # Post Mutations
   createPost(input: CreatePostInput): Post!

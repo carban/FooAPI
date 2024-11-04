@@ -95,13 +95,13 @@ func (r *mutationResolver) DeleteUser(ctx context.Context, id string) (*model.Us
 	return QueryResolver.User(&queryResolver{}, ctx, id)
 }
 
-// CreateAlbum is the resolver for the createAlbum field.
-func (r *mutationResolver) CreateAlbum(ctx context.Context, input *model.CreateAlbumInput) (*model.Album, error) {
-	arrayLength, err := rdb.JSONArrLen(ctx, "albums_array", "$").Result()
+// CreateSong is the resolver for the createSong field.
+func (r *mutationResolver) CreateSong(ctx context.Context, input *model.CreateSongInput) (*model.Song, error) {
+	arrayLength, err := rdb.JSONArrLen(ctx, "songs_array", "$").Result()
 	if err != nil {
 		return nil, fmt.Errorf("error getting data")
 	}
-	resData := model.Album{
+	resData := model.Song{
 		ID:               strconv.Itoa(int(arrayLength[0]) + 1),
 		Name:             input.Name,
 		Artists:          input.Artists,
@@ -113,8 +113,8 @@ func (r *mutationResolver) CreateAlbum(ctx context.Context, input *model.CreateA
 	return &resData, nil
 }
 
-// UpdateAlbum is the resolver for the updateAlbum field.
-func (r *mutationResolver) UpdateAlbum(ctx context.Context, id string, input *model.UpdateAlbumInput) (*model.Album, error) {
+// UpdateSong is the resolver for the updateSong field.
+func (r *mutationResolver) UpdateSong(ctx context.Context, id string, input *model.UpdateSongInput) (*model.Song, error) {
 	idInt, convErr := strconv.Atoi(id)
 	if convErr != nil {
 		return nil, fmt.Errorf("invalid ID")
@@ -122,12 +122,12 @@ func (r *mutationResolver) UpdateAlbum(ctx context.Context, id string, input *mo
 	if idInt <= 0 {
 		return nil, fmt.Errorf("ID must be positive")
 	}
-	obj, err := rdb.JSONGet(ctx, "albums_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	obj, err := rdb.JSONGet(ctx, "songs_array", fmt.Sprintf("[%d]", idInt-1)).Result()
 	if err != nil {
 		return nil, fmt.Errorf("error getting data")
 	}
 
-	var resData model.Album
+	var resData model.Song
 	if err := json.Unmarshal([]byte(obj), &resData); err != nil {
 		return nil, fmt.Errorf("error getting data")
 	}
@@ -153,9 +153,9 @@ func (r *mutationResolver) UpdateAlbum(ctx context.Context, id string, input *mo
 	return &resData, nil
 }
 
-// DeleteAlbum is the resolver for the deleteAlbum field.
-func (r *mutationResolver) DeleteAlbum(ctx context.Context, id string) (*model.Album, error) {
-	return QueryResolver.Album(&queryResolver{}, ctx, id)
+// DeleteSong is the resolver for the deleteSong field.
+func (r *mutationResolver) DeleteSong(ctx context.Context, id string) (*model.Song, error) {
+	return QueryResolver.Song(&queryResolver{}, ctx, id)
 }
 
 // CreatePost is the resolver for the createPost field.
@@ -525,13 +525,13 @@ func (r *mutationResolver) DeleteMovie(ctx context.Context, id string) (*model.M
 	return QueryResolver.Movie(&queryResolver{}, ctx, id)
 }
 
-// Albums is the resolver for the albums field.
-func (r *queryResolver) Albums(ctx context.Context) ([]*model.Album, error) {
-	obj, err := rdb.JSONGet(ctx, "albums_array").Result()
+// Songs is the resolver for the songs field.
+func (r *queryResolver) Songs(ctx context.Context) ([]*model.Song, error) {
+	obj, err := rdb.JSONGet(ctx, "songs_array").Result()
 	if err != nil {
 		return nil, nil
 	}
-	var resObj []*model.Album
+	var resObj []*model.Song
 	json.Unmarshal([]byte(obj), &resObj)
 	return resObj, nil
 }
@@ -602,8 +602,8 @@ func (r *queryResolver) Movies(ctx context.Context) ([]*model.Movie, error) {
 	return resObj, nil
 }
 
-// Album is the resolver for the album field.
-func (r *queryResolver) Album(ctx context.Context, id string) (*model.Album, error) {
+// Song is the resolver for the song field.
+func (r *queryResolver) Song(ctx context.Context, id string) (*model.Song, error) {
 	idInt, convErr := strconv.Atoi(id)
 	if convErr != nil {
 		return nil, fmt.Errorf("invalid ID")
@@ -611,11 +611,11 @@ func (r *queryResolver) Album(ctx context.Context, id string) (*model.Album, err
 	if idInt <= 0 {
 		return nil, fmt.Errorf("ID must be positive")
 	}
-	obj, err := rdb.JSONGet(ctx, "albums_array", fmt.Sprintf("[%d]", idInt-1)).Result()
+	obj, err := rdb.JSONGet(ctx, "songs_array", fmt.Sprintf("[%d]", idInt-1)).Result()
 	if err != nil {
 		return nil, fmt.Errorf("failed to fetch: %w", err)
 	}
-	var res model.Album
+	var res model.Song
 	err = json.Unmarshal([]byte(obj), &res)
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse: %w", err)

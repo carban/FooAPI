@@ -24,8 +24,8 @@ func RandRedis(dataType string) gin.HandlerFunc {
 			c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Error getting data", "Tip": "Check if the index is correct"})
 			return
 		}
-		if dataType == "albums" {
-			resData := models.Album{}
+		if dataType == "songs" {
+			resData := models.Song{}
 			if err := json.Unmarshal([]byte(obj), &resData); err != nil {
 				c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
 				return

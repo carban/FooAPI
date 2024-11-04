@@ -20,8 +20,8 @@ func Redis(dataType string) gin.HandlerFunc {
 		// WARNING
 		// Yes... There is no better way to do this
 		// There is no way to change resData dynamically, you must to define the type...this is because the order of the attributtes in responses
-		if dataType == "albums" {
-			resData := []models.Album{}
+		if dataType == "songs" {
+			resData := []models.Song{}
 			if err := json.Unmarshal([]byte(obj), &resData); err != nil {
 				c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
 				return

@@ -45,9 +45,9 @@ function allServices(): object[] {
             path: "/docs/movies"
         },
         {
-            name: "Albums",
+            name: "Songs",
             icon: <BiMusic className="w-6 h-6 text-orange-400" />,
-            path: "/docs/albums"
+            path: "/docs/songs"
         },
         {
             name: "Countries",

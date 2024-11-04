@@ -28,17 +28,17 @@ func PutRedisById(dataType string) gin.HandlerFunc {
 		// WARNING
 		// Yes... There is no better way to do this
 		// There is no way to change resData dynamically, you must to define the type...this is because the order of the attributtes in responses
-		if dataType == "albums" {
-			var newAlbum models.AlbumReq
-			if err := c.BindJSON(&newAlbum); err != nil {
+		if dataType == "songs" {
+			var newSong models.SongReq
+			if err := c.BindJSON(&newSong); err != nil {
 				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 				return
 			}
-			if !newAlbum.IsExplicit {
-				newAlbum.IsExplicit = false
+			if !newSong.IsExplicit {
+				newSong.IsExplicit = false
 			}
-			newAlbum.ID = strconv.Itoa(id)
-			c.IndentedJSON(http.StatusCreated, gin.H{"data": newAlbum})
+			newSong.ID = strconv.Itoa(id)
+			c.IndentedJSON(http.StatusCreated, gin.H{"data": newSong})
 		} else if dataType == "users" {
 			var newUser models.UserReq
 			if err := c.BindJSON(&newUser); err != nil {

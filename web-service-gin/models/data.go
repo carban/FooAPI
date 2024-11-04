@@ -1,7 +1,6 @@
 package models
 
-// album represents data about a record album.
-type Album struct {
+type Song struct {
 	ID               string `json:"id"`
 	Name             string `json:"name"`
 	Artists          string `json:"artists"`

@@ -30,13 +30,13 @@ func PatchRedisById(dataType string) gin.HandlerFunc {
 		// WARNING
 		// Yes... There is no better way to do this
 		// There is no way to change resData dynamically, you must to define the type...this is because the order of the attributtes in responses
-		if dataType == "albums" {
-			var newAlbum models.Album
-			if err := c.ShouldBind(&newAlbum); err != nil {
+		if dataType == "songs" {
+			var newSong models.Song
+			if err := c.ShouldBind(&newSong); err != nil {
 				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 				return
 			}
-			resData := models.Album{}
+			resData := models.Song{}
 			if err := json.Unmarshal([]byte(obj), &resData); err != nil {
 				c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
 				return
@@ -47,13 +47,13 @@ func PatchRedisById(dataType string) gin.HandlerFunc {
 			for i := 0; i < t.NumField(); i++ {
 				field := t.Field(i)
 				fieldName := field.Name
-				fieldValue := reflect.ValueOf(newAlbum).FieldByName(fieldName)
+				fieldValue := reflect.ValueOf(newSong).FieldByName(fieldName)
 
 				if fieldValue.IsValid() && !fieldValue.IsZero() && fieldName != "ID" {
 					v.Field(i).Set(fieldValue)
 				}
 			}
-			if !newAlbum.IsExplicit {
+			if !newSong.IsExplicit {
 				resData.IsExplicit = false
 			}
 			c.IndentedJSON(http.StatusCreated, gin.H{"data": resData})
