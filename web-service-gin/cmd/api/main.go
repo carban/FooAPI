@@ -34,7 +34,7 @@ func main() {
 			if err != nil {
 				return
 			}
-			ctx.IndentedJSON(http.StatusOK, fc)
+			ctx.JSON(http.StatusOK, fc)
 		})
 
 		categories := []string{"songs", "users", "posts", "comments", "products", "todos", "movies"}

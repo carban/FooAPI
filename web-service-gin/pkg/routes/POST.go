@@ -13,7 +13,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 		arrayLength, err := rdb.JSONArrLen(c, dataType+"_array", "$").Result()
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-			c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Error getting data", "Tip": "Check if the index is correct"})
+			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Error getting data", "Tip": "Check if the index is correct"})
 			return
 		}
 		// WARNING
@@ -29,7 +29,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 				newSong.IsExplicit = false
 			}
 			newSong.ID = strconv.Itoa(int(arrayLength[0]) + 1)
-			c.IndentedJSON(http.StatusCreated, gin.H{"data": newSong})
+			c.JSON(http.StatusCreated, gin.H{"data": newSong})
 		} else if dataType == "users" {
 			var newUser models.UserReq
 			if err := c.BindJSON(&newUser); err != nil {
@@ -37,7 +37,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 				return
 			}
 			newUser.ID = strconv.Itoa(int(arrayLength[0]) + 1)
-			c.IndentedJSON(http.StatusCreated, gin.H{"data": newUser})
+			c.JSON(http.StatusCreated, gin.H{"data": newUser})
 		} else if dataType == "posts" {
 			var newPost models.PostReq
 			if err := c.BindJSON(&newPost); err != nil {
@@ -45,7 +45,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 				return
 			}
 			newPost.ID = strconv.Itoa(int(arrayLength[0]) + 1)
-			c.IndentedJSON(http.StatusCreated, gin.H{"data": newPost})
+			c.JSON(http.StatusCreated, gin.H{"data": newPost})
 		} else if dataType == "comments" {
 			var newComment models.CommentReq
 			if err := c.BindJSON(&newComment); err != nil {
@@ -53,7 +53,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 				return
 			}
 			newComment.ID = strconv.Itoa(int(arrayLength[0]) + 1)
-			c.IndentedJSON(http.StatusCreated, gin.H{"data": newComment})
+			c.JSON(http.StatusCreated, gin.H{"data": newComment})
 		} else if dataType == "products" {
 			var newProduct models.ProductReq
 			if err := c.BindJSON(&newProduct); err != nil {
@@ -61,7 +61,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 				return
 			}
 			newProduct.ID = strconv.Itoa(int(arrayLength[0]) + 1)
-			c.IndentedJSON(http.StatusCreated, gin.H{"data": newProduct})
+			c.JSON(http.StatusCreated, gin.H{"data": newProduct})
 		} else if dataType == "todos" {
 			var newTodo models.TodoReq
 			if err := c.BindJSON(&newTodo); err != nil {
@@ -72,7 +72,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 				newTodo.Closed = false
 			}
 			newTodo.ID = strconv.Itoa(int(arrayLength[0]) + 1)
-			c.IndentedJSON(http.StatusCreated, gin.H{"data": newTodo})
+			c.JSON(http.StatusCreated, gin.H{"data": newTodo})
 		} else if dataType == "movies" {
 			var newMovie models.MovieReq
 			if err := c.BindJSON(&newMovie); err != nil {
@@ -80,7 +80,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 				return
 			}
 			newMovie.ID = strconv.Itoa(int(arrayLength[0]) + 1)
-			c.IndentedJSON(http.StatusCreated, gin.H{"data": newMovie})
+			c.JSON(http.StatusCreated, gin.H{"data": newMovie})
 		}
 	}
 }

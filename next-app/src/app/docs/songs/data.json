@@ -4,48 +4,129 @@
     "endpoints": [
         {
             "status": "GET",
-            "path": "/api/mit/edu",
+            "path": "/api/songs",
             "payload": null,
-            "response": {},
+            "response": [{
+                "id": "1",
+                "name": "Espresso",
+                "artists": "Sabrina Carpenter",
+                "isExplicit": true,
+                "durationMs": 175459,
+                "albumName": "Espresso",
+                "albumReleaseDate": "2024-04-12"
+            },
+            "49 more elements..."
+        ],
             "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
         },
         {
             "status": "GET",
-            "path": "/api/mit/edu/:id",
-            "payload": {},
-            "response": null,
+            "path": "/api/songs/:id",
+            "payload": null,
+            "response": {
+                "id": "1",
+                "name": "Espresso",
+                "artists": "Sabrina Carpenter",
+                "isExplicit": true,
+                "durationMs": 175459,
+                "albumName": "Espresso",
+                "albumReleaseDate": "2024-04-12"
+            },
+            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+        },
+        {
+            "status": "GET",
+            "path": "/api/songs/rand",
+            "payload": null,
+            "response": {
+                "id": "1",
+                "name": "Espresso",
+                "artists": "Sabrina Carpenter",
+                "isExplicit": true,
+                "durationMs": 175459,
+                "albumName": "Espresso",
+                "albumReleaseDate": "2024-04-12"
+            },
             "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
         },
         {
             "status": "PUT",
-            "path": "/api/mit/edu/:id",
-            "payload": [
-                {
-                    "hola": 2
-                },
-                "99 more elements..."],
-            "response": {},
+            "path": "/api/songs/:id",
+            "payload": {
+                "name": "foooName",
+                "artists": "Sabrina Carpenter",
+                "isExplicit": true,
+                "durationMs": 175459,
+                "albumName": "Espresso",
+                "albumReleaseDate": "2024-04-12"
+            },
+            "response": {
+                "id": "1",
+                "name": "foooName",
+                "artists": "Sabrina Carpenter",
+                "isExplicit": true,
+                "durationMs": 175459,
+                "albumName": "Espresso",
+                "albumReleaseDate": "2024-04-12"
+            },
             "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
         },
         {
             "status": "PATCH",
-            "path": "/api/mit/edu/:id",
-            "payload": {},
-            "response": { "hola": 2 },
+            "path": "/api/songs/:id",
+            "payload": {
+                "name": "foooName"
+            },
+            "response": {
+                "id": "1",
+                "name": "foooName",
+                "artists": "Sabrina Carpenter",
+                "isExplicit": true,
+                "durationMs": 175459,
+                "albumName": "Espresso",
+                "albumReleaseDate": "2024-04-12"
+            },
             "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
         },
         {
             "status": "POST",
-            "path": "/api/mit/edu",
-            "payload": {},
-            "response": {},
+            "path": "/api/songs",
+            "payload": {
+                "name": "foooName",
+                "artists": "fooArtist",
+                "isExplicit": true,
+                "durationMs": 175459,
+                "albumName": "FooAlbum",
+                "albumReleaseDate": "2024-04-12"
+            },
+            "response": {
+                "id": "51",
+                "name": "foooName",
+                "artists": "fooArtist",
+                "isExplicit": true,
+                "durationMs": 175459,
+                "albumName": "FooAlbum",
+                "albumReleaseDate": "2024-04-12"
+            },
             "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
         },
         {
             "status": "DELETE",
-            "path": "/api/mit/edu/:id",
+            "path": "/api/songs/:id",
             "payload": {},
-            "response": {},
+            "response": {"id": "$id"},
+            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+        },
+        {
+            "status": "GRAPHQL",
+            "path": "/query",
+            "payload": {},
+            "response": {"id": "$id"},
+            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+        },
+        {
+            "status": "GRAPHQL",
+            "path": "/playground",
             "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
         }
     ]

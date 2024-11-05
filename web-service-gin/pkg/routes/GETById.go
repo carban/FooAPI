@@ -15,16 +15,16 @@ func RedisById(dataType string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id, convErr := strconv.Atoi(c.Param("id"))
 		if convErr != nil {
-			c.IndentedJSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be a number"})
+			c.JSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be a number"})
 			return
 		}
 		if id <= 0 {
-			c.IndentedJSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be bigger than 0"})
+			c.JSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be bigger than 0"})
 			return
 		}
 		obj, err := rdb.JSONGet(c, dataType+"_array", "["+fmt.Sprintf("%d", id-1)+"]").Result()
 		if err != nil {
-			c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Error getting data", "Tip": "Check if the index is correct"})
+			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Error getting data", "Tip": "Check if the index is correct"})
 			return
 		}
 		// WARNING
@@ -33,52 +33,52 @@ func RedisById(dataType string) gin.HandlerFunc {
 		if dataType == "songs" {
 			resData := models.Song{}
 			if err := json.Unmarshal([]byte(obj), &resData); err != nil {
-				c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
+				c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
 				return
 			}
-			c.IndentedJSON(http.StatusOK, gin.H{"data": resData})
+			c.JSON(http.StatusOK, gin.H{"data": resData})
 		} else if dataType == "users" {
 			resData := models.User{}
 			if err := json.Unmarshal([]byte(obj), &resData); err != nil {
-				c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
+				c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
 				return
 			}
-			c.IndentedJSON(http.StatusOK, gin.H{"data": resData})
+			c.JSON(http.StatusOK, gin.H{"data": resData})
 		} else if dataType == "posts" {
 			resData := models.Post{}
 			if err := json.Unmarshal([]byte(obj), &resData); err != nil {
-				c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
+				c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
 				return
 			}
-			c.IndentedJSON(http.StatusOK, gin.H{"data": resData})
+			c.JSON(http.StatusOK, gin.H{"data": resData})
 		} else if dataType == "comments" {
 			resData := models.Comment{}
 			if err := json.Unmarshal([]byte(obj), &resData); err != nil {
-				c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
+				c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
 				return
 			}
-			c.IndentedJSON(http.StatusOK, gin.H{"data": resData})
+			c.JSON(http.StatusOK, gin.H{"data": resData})
 		} else if dataType == "products" {
 			resData := models.Product{}
 			if err := json.Unmarshal([]byte(obj), &resData); err != nil {
-				c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
+				c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
 				return
 			}
-			c.IndentedJSON(http.StatusOK, gin.H{"data": resData})
+			c.JSON(http.StatusOK, gin.H{"data": resData})
 		} else if dataType == "todos" {
 			resData := models.Todo{}
 			if err := json.Unmarshal([]byte(obj), &resData); err != nil {
-				c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
+				c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
 				return
 			}
-			c.IndentedJSON(http.StatusOK, gin.H{"data": resData})
+			c.JSON(http.StatusOK, gin.H{"data": resData})
 		} else if dataType == "movies" {
 			resData := models.Movie{}
 			if err := json.Unmarshal([]byte(obj), &resData); err != nil {
-				c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
+				c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
 				return
 			}
-			c.IndentedJSON(http.StatusOK, gin.H{"data": resData})
+			c.JSON(http.StatusOK, gin.H{"data": resData})
 		}
 	}
 }
@@ -87,23 +87,23 @@ func GeoRedisById() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id, convErr := strconv.Atoi(c.Param("id"))
 		if convErr != nil {
-			c.IndentedJSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be a number"})
+			c.JSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be a number"})
 			return
 		}
 		if id <= 0 {
-			c.IndentedJSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be bigger than 0"})
+			c.JSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be bigger than 0"})
 			return
 		}
 		obj, err := rdb.JSONGet(c, "capitals_array", ".features["+fmt.Sprintf("%d", id-1)+"]").Result()
 		if err != nil {
-			c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Error getting data", "Tip": "Check if the index is correct"})
+			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Error getting data", "Tip": "Check if the index is correct"})
 			return
 		}
 		resData := geojson.Feature{}
 		if err := json.Unmarshal([]byte(obj), &resData); err != nil {
-			c.IndentedJSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
+			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
 			return
 		}
-		c.IndentedJSON(http.StatusOK, gin.H{"data": resData})
+		c.JSON(http.StatusOK, gin.H{"data": resData})
 	}
 }

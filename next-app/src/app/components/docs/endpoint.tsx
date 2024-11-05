@@ -13,6 +13,7 @@ export default function Endpoint({ status, path, desc, payload, response }: { st
         "PATCH": "bg-yellow-400",
         "POST": "bg-green-400",
         "DELETE": "bg-red-400",
+        "GRAPHQL": "bg-pink-400"
     }
 
     let color: string = colors[status];
