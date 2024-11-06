@@ -1,23 +1,24 @@
 {
     "title": "This is the Songs data collection",
-    "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga, nam error nihil facilis dolorum consequuntur facere aut porro totam, labore blanditiis voluptatum tempora odio! Molestiae hic quasi harum eius dolore.",
+    "desc": "Here you can find a list of songs, these songs are real not fake generated. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app",
     "endpoints": [
         {
             "status": "GET",
             "path": "/api/songs",
             "payload": null,
-            "response": [{
-                "id": "1",
-                "name": "Espresso",
-                "artists": "Sabrina Carpenter",
-                "isExplicit": true,
-                "durationMs": 175459,
-                "albumName": "Espresso",
-                "albumReleaseDate": "2024-04-12"
-            },
-            "49 more elements..."
-        ],
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "response": [
+                {
+                    "id": "1",
+                    "name": "Espresso",
+                    "artists": "Sabrina Carpenter",
+                    "isExplicit": true,
+                    "durationMs": 175459,
+                    "albumName": "Espresso",
+                    "albumReleaseDate": "2024-04-12"
+                },
+                "49 more elements..."
+            ],
+            "desc": "Get an array with the complete list of elements"
         },
         {
             "status": "GET",
@@ -32,7 +33,7 @@
                 "albumName": "Espresso",
                 "albumReleaseDate": "2024-04-12"
             },
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "desc": "Get an element by ID"
         },
         {
             "status": "GET",
@@ -47,7 +48,7 @@
                 "albumName": "Espresso",
                 "albumReleaseDate": "2024-04-12"
             },
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "desc": "Get a random element"
         },
         {
             "status": "PUT",
@@ -69,7 +70,7 @@
                 "albumName": "Espresso",
                 "albumReleaseDate": "2024-04-12"
             },
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "desc": "Update a complete element"
         },
         {
             "status": "PATCH",
@@ -86,7 +87,7 @@
                 "albumName": "Espresso",
                 "albumReleaseDate": "2024-04-12"
             },
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "desc": "Update partial fields of an element."
         },
         {
             "status": "POST",
@@ -108,26 +109,30 @@
                 "albumName": "FooAlbum",
                 "albumReleaseDate": "2024-04-12"
             },
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "desc": "Create a new element."
         },
         {
             "status": "DELETE",
             "path": "/api/songs/:id",
             "payload": {},
-            "response": {"id": "$id"},
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "response": {
+                "id": "$id"
+            },
+            "desc": "Delete an element."
         },
         {
             "status": "GRAPHQL",
             "path": "/query",
             "payload": {},
-            "response": {"id": "$id"},
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "response": {
+                "id": "$id"
+            },
+            "desc": "Endpoint to send your GraphQL queries"
         },
         {
             "status": "GRAPHQL",
             "path": "/playground",
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "desc": "Playground to test the GraphQL queries"
         }
     ]
 }
