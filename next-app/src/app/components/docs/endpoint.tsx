@@ -25,35 +25,33 @@ export default function Endpoint({ status, path, desc, payload, response }: { st
     }
     return (
         <div className="p-2 mt-3 bg-gray-800">
-            <div className="flex flex-col md:flex-row items-start md:items-center lg:space-x-4">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between md:space-x-4 flex-wrap">
                 {/* Method */}
-                <h1
-                    className={`${color} font-bold text-sm text-center rounded-3xl text-gray-900 min-w-[80px] md:min-w-[90px] lg:w-36 w-full md:w-auto mb-2 md:mb-0`}
-                >
+                <h1 className={`${color} font-bold text-sm text-center rounded-3xl text-gray-900 mb-2 md:mb-0 min-w-[80px] md:min-w-[90px] w-full md:w-auto`}>
                     {status}
                 </h1>
 
                 {/* Endpoint Path */}
-                <code className="text-white hover:underline w-full md:w-auto lg:w-96 text-center md:text-left mb-2 md:mb-0 md:mr-5">
+                <code className="text-white hover:underline mb-2 md:mb-0 w-64 flex-1">
                     <Link href={path}>{path}</Link>
                 </code>
 
                 {/* Description */}
-                <h3 className="text-sm text-white flex-1 sm:text-center md:text-left mb-2 md:mb-0">
+                <h3 className="text-sm text-white flex-1">
                     {desc}
                 </h3>
 
                 {/* Expand/Collapse Button */}
-                <button onClick={handleToggle} className="ml-0 md:ml-2 w-6 h-6 md:w-auto">
+                <button onClick={handleToggle} className="ml-0 md:ml-2 w-full md:w-auto">
                     {toggle ? (
-                        <SlArrowUp className="w-6 h-6 mx-auto md:mx-0" />
+                        <SlArrowUp className="w-6 h-6" />
                     ) : (
-                        <SlArrowDown className="w-6 h-6 mx-auto md:mx-0" />
+                        <SlArrowDown className="w-6 h-6" />
                     )}
                 </button>
             </div>
 
             {toggle && <EndpointContent payload={payload} response={response} />}
-        </div >
+        </div>
     );
 }
