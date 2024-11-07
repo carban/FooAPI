@@ -132,7 +132,7 @@
         {
             "status": "GRAPHQL",
             "path": "/playground",
-            "desc": "Playground to test the GraphQL queries"
+            "desc": "Playground to test your GraphQL queries"
         }
     ]
 }

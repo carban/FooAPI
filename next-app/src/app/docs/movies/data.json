@@ -1,52 +1,226 @@
 {
     "title": "This is the Movies data collection",
-    "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga, nam error nihil facilis dolorum consequuntur facere aut porro totam, labore blanditiis voluptatum tempora odio! Molestiae hic quasi harum eius dolore.",
+    "desc": "Here you can find a list of movies, these movies are real not fake generated. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app",
     "endpoints": [
         {
             "status": "GET",
-            "path": "/api/mit/edu",
+            "path": "/api/movies",
             "payload": null,
-            "response": {},
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "response": [
+                {
+                    "id": "1",
+                    "title": "The Shawshank Redemption",
+                    "year": "1994",
+                    "rated": "R",
+                    "released": "14-10-1994",
+                    "runtime": "142 min",
+                    "genre": "Drama",
+                    "director": "Frank Darabont",
+                    "writer": "Stephen King, Frank Darabont",
+                    "actors": "Tim Robbins, Morgan Freeman, Bob Gunton",
+                    "plot": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
+                    "language": "English",
+                    "country": "United States",
+                    "awards": "Nominated for 7 Oscars. 21 wins \u0026 42 nominations total",
+                    "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
+                    "imdbRating": "9.3",
+                    "imdbId": "tt0111161",
+                    "boxOffice": "$28,767,189"
+                },
+                "49 more elements..."
+            ],
+            "desc": "Get an array with the complete list of elements"
         },
         {
             "status": "GET",
-            "path": "/api/mit/edu/:id",
-            "payload": {},
-            "response": null,
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "path": "/api/movies/:id",
+            "payload": null,
+            "response": {
+                "id": "1",
+                "title": "The Shawshank Redemption",
+                "year": "1994",
+                "rated": "R",
+                "released": "14-10-1994",
+                "runtime": "142 min",
+                "genre": "Drama",
+                "director": "Frank Darabont",
+                "writer": "Stephen King, Frank Darabont",
+                "actors": "Tim Robbins, Morgan Freeman, Bob Gunton",
+                "plot": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
+                "language": "English",
+                "country": "United States",
+                "awards": "Nominated for 7 Oscars. 21 wins \u0026 42 nominations total",
+                "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
+                "imdbRating": "9.3",
+                "imdbId": "tt0111161",
+                "boxOffice": "$28,767,189"
+            },
+            "desc": "Get an element by ID"
+        },
+        {
+            "status": "GET",
+            "path": "/api/movies/rand",
+            "payload": null,
+            "response": {
+                "id": "1",
+                "title": "The Shawshank Redemption",
+                "year": "1994",
+                "rated": "R",
+                "released": "14-10-1994",
+                "runtime": "142 min",
+                "genre": "Drama",
+                "director": "Frank Darabont",
+                "writer": "Stephen King, Frank Darabont",
+                "actors": "Tim Robbins, Morgan Freeman, Bob Gunton",
+                "plot": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
+                "language": "English",
+                "country": "United States",
+                "awards": "Nominated for 7 Oscars. 21 wins \u0026 42 nominations total",
+                "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
+                "imdbRating": "9.3",
+                "imdbId": "tt0111161",
+                "boxOffice": "$28,767,189"
+            },
+            "desc": "Get a random element"
         },
         {
             "status": "PUT",
-            "path": "/api/mit/edu/:id",
-            "payload": [
-                {
-                    "hola": 2
-                },
-                "99 more elements..."],
-            "response": {},
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "path": "/api/movies/:id",
+            "payload": {
+                "title": "Foo title",
+                "year": "1994",
+                "rated": "R",
+                "released": "14-10-1994",
+                "runtime": "142 min",
+                "genre": "Drama",
+                "director": "Foo director",
+                "writer": "Foo writer",
+                "actors": "Fooman",
+                "plot": "A Foo movie",
+                "language": "English",
+                "country": "United States",
+                "awards": "Nominated for 11 oscars",
+                "poster": "",
+                "imdbRating": "10",
+                "imdbId": "None",
+                "boxOffice": "$1"
+            },
+            "response": {
+                "id": "1",
+                "title": "Foo title",
+                "year": "1994",
+                "rated": "R",
+                "released": "14-10-1994",
+                "runtime": "142 min",
+                "genre": "Drama",
+                "director": "Foo director",
+                "writer": "Foo writer",
+                "actors": "Fooman",
+                "plot": "A Foo movie",
+                "language": "English",
+                "country": "United States",
+                "awards": "Nominated for 11 oscars",
+                "poster": "",
+                "imdbRating": "10",
+                "imdbId": "None",
+                "boxOffice": "$1"
+            },
+            "desc": "Update a complete element"
         },
         {
             "status": "PATCH",
-            "path": "/api/mit/edu/:id",
-            "payload": {},
-            "response": { "hola": 2 },
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "path": "/api/movies/:id",
+            "payload": {
+                "title": "Fooooo movieee"
+            },
+            "response": {
+                "id": "1",
+                "title": "Fooooo movieee",
+                "year": "1994",
+                "rated": "R",
+                "released": "14-10-1994",
+                "runtime": "142 min",
+                "genre": "Drama",
+                "director": "Frank Darabont",
+                "writer": "Stephen King, Frank Darabont",
+                "actors": "Tim Robbins, Morgan Freeman, Bob Gunton",
+                "plot": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
+                "language": "English",
+                "country": "United States",
+                "awards": "Nominated for 7 Oscars. 21 wins \u0026 42 nominations total",
+                "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
+                "imdbRating": "9.3",
+                "imdbId": "tt0111161",
+                "boxOffice": "$28,767,189"
+            },
+            "desc": "Update partial fields of an element."
         },
         {
             "status": "POST",
-            "path": "/api/mit/edu",
-            "payload": {},
-            "response": {},
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "path": "/api/movies",
+            "payload": {
+                "title": "Foo title",
+                "year": "1994",
+                "rated": "R",
+                "released": "14-10-1994",
+                "runtime": "142 min",
+                "genre": "Drama",
+                "director": "Foo director",
+                "writer": "Foo writer",
+                "actors": "Fooman",
+                "plot": "A Foo movie",
+                "language": "English",
+                "country": "United States",
+                "awards": "Nominated for 11 oscars",
+                "poster": "",
+                "imdbRating": "10",
+                "imdbId": "None",
+                "boxOffice": "$1"
+            },
+            "response": {
+                "id": "51",
+                "title": "Foo title",
+                "year": "1994",
+                "rated": "R",
+                "released": "14-10-1994",
+                "runtime": "142 min",
+                "genre": "Drama",
+                "director": "Foo director",
+                "writer": "Foo writer",
+                "actors": "Fooman",
+                "plot": "A Foo movie",
+                "language": "English",
+                "country": "United States",
+                "awards": "Nominated for 11 oscars",
+                "poster": "",
+                "imdbRating": "10",
+                "imdbId": "None",
+                "boxOffice": "$1"
+            },
+            "desc": "Create a new element."
         },
         {
             "status": "DELETE",
-            "path": "/api/mit/edu/:id",
+            "path": "/api/movies/:id",
             "payload": {},
-            "response": {},
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "response": {
+                "id": "$id"
+            },
+            "desc": "Delete an element."
+        },
+        {
+            "status": "GRAPHQL",
+            "path": "/query",
+            "payload": {},
+            "response": {
+                "id": "$id"
+            },
+            "desc": "Endpoint to send your GraphQL queries"
+        },
+        {
+            "status": "GRAPHQL",
+            "path": "/playground",
+            "desc": "Playground to test your GraphQL queries"
         }
     ]
 }
