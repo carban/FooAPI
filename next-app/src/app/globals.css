@@ -39,17 +39,9 @@ body {
 
 /* #be185d  */
 .hero {
-  --s: 310px;
-  /* control the size*/
-  --c1: #ab1554;
-  --c2: #be185d;
-  --c3: #931349;
-
-  background:
-    repeating-conic-gradient(from 30deg, #0000 0 120deg, var(--c3) 0 50%) calc(var(--s)/2) calc(var(--s)*tan(30deg)/2),
-    repeating-conic-gradient(from 30deg, var(--c1) 0 60deg, var(--c2) 0 120deg, var(--c3) 0 50%);
-  background-size: var(--s) calc(var(--s)*tan(30deg));
-}
+  background-color: #be185d;
+  background-image: linear-gradient(43deg, #4158D0 0%, #be185d 46%, #FFCC70 100%);
+  }
 
 .map {
   border-style: none;
