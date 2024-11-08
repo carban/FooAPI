@@ -41,9 +41,9 @@ function allServices(): object[] {
             path: "/docs/cities"
         },
         {
-            name: "Photos",
+            name: "Images",
             icon: <BiPhotoAlbum className="w-8 h-8 text-pink-300" />,
-            path: "/docs/photos"
+            path: "/docs/images"
         },
         {
             name: "Movies",

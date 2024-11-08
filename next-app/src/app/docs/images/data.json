@@ -1,0 +1,20 @@
+{
+    "title": "This is the Images data collection",
+    "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga, nam error nihil facilis dolorum consequuntur facere aut porro totam, labore blanditiis voluptatum tempora odio! Molestiae hic quasi harum eius dolore.",
+    "endpoints": [
+        {
+            "status": "GET",
+            "path": "/api/mit/edu",
+            "payload": null,
+            "response": {},
+            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+        },
+        {
+            "status": "GET",
+            "path": "/api/mit/edu/:id",
+            "payload": {},
+            "response": null,
+            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+        }
+    ]
+}
