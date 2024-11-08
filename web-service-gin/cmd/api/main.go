@@ -1,13 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
+	"os"
 	"strings"
 	"web-service-gin/pkg/routes"
 
 	"github.com/gin-gonic/gin"
-	geojson "github.com/paulmach/go.geojson"
 )
 
 func main() {
@@ -23,18 +22,12 @@ func main() {
 		}
 	})
 
+	router.StaticFile("/favicon.ico", "./public/favicon.ico")
+
 	api := router.Group("/api")
 	{
-		api.GET("/geo", func(ctx *gin.Context) {
-			fc := geojson.NewFeatureCollection()
-			fc.AddFeature(geojson.NewPointFeature([]float64{1, 2}))
-			fc.AddFeature(geojson.NewPointFeature([]float64{3, 4}))
-			rawJSON, err := fc.MarshalJSON()
-			fmt.Println(string(rawJSON))
-			if err != nil {
-				return
-			}
-			ctx.JSON(http.StatusOK, fc)
+		api.GET("/", func(ctx *gin.Context) {
+			ctx.JSON(http.StatusOK, gin.H{"Msg": "Welcome to FooApi"})
 		})
 
 		categories := []string{"songs", "users", "posts", "comments", "products", "todos", "movies"}
@@ -48,8 +41,27 @@ func main() {
 			api.POST("/"+category, routes.PostRedis(category))
 			api.DELETE("/"+category+"/:id", routes.DeleteRedisById(category))
 		}
-		api.GET("/capitals", routes.GeoRedis())
-		api.GET("/capitals/:id", routes.GeoRedisById())
+		api.GET("/cities", routes.GeoRedis())
+		api.GET("/cities/:id", routes.GeoRedisById())
 	}
+
+	router.GET("/imgmaker/:width/:height/:bgColor/:fontColor/:text", routes.Img())
+	router.GET("/img/:id", func(c *gin.Context) {
+		id := c.Param("id")
+		filePath := "./images/" + id
+
+		_, err := os.Stat(filePath)
+		if err != nil {
+			if os.IsNotExist(err) {
+				c.JSON(http.StatusNotFound, gin.H{"error": "Image not found"})
+			} else {
+				c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal server error"})
+			}
+			return
+		}
+
+		c.File(filePath)
+	})
+
 	router.Run("localhost:8080")
 }

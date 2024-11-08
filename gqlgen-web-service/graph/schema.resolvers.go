@@ -14,12 +14,16 @@ import (
 
 // CreateUser is the resolver for the createUser field.
 func (r *mutationResolver) CreateUser(ctx context.Context, input model.CreateUserInput) (*model.User, error) {
-	arrayLength, err := rdb.JSONArrLen(ctx, "users_array", "$").Result()
+	arrayLength, err := rdb.Get(ctx, "users_len").Result()
 	if err != nil {
 		return nil, fmt.Errorf("error getting data")
 	}
+	len, convErr := strconv.Atoi(arrayLength)
+	if convErr != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
 	resData := model.User{
-		ID:        strconv.Itoa(int(arrayLength[0]) + 1),
+		ID:        strconv.Itoa(len + 1),
 		Name:      input.Name,
 		LastName:  input.LastName,
 		Username:  input.Username,
@@ -97,12 +101,16 @@ func (r *mutationResolver) DeleteUser(ctx context.Context, id string) (*model.Us
 
 // CreateSong is the resolver for the createSong field.
 func (r *mutationResolver) CreateSong(ctx context.Context, input *model.CreateSongInput) (*model.Song, error) {
-	arrayLength, err := rdb.JSONArrLen(ctx, "songs_array", "$").Result()
+	arrayLength, err := rdb.Get(ctx, "songs_len").Result()
 	if err != nil {
 		return nil, fmt.Errorf("error getting data")
 	}
+	len, convErr := strconv.Atoi(arrayLength)
+	if convErr != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
 	resData := model.Song{
-		ID:               strconv.Itoa(int(arrayLength[0]) + 1),
+		ID:               strconv.Itoa(len + 1),
 		Name:             input.Name,
 		Artists:          input.Artists,
 		IsExplicit:       input.IsExplicit,
@@ -160,12 +168,16 @@ func (r *mutationResolver) DeleteSong(ctx context.Context, id string) (*model.So
 
 // CreatePost is the resolver for the createPost field.
 func (r *mutationResolver) CreatePost(ctx context.Context, input *model.CreatePostInput) (*model.Post, error) {
-	arrayLength, err := rdb.JSONArrLen(ctx, "posts_array", "$").Result()
+	arrayLength, err := rdb.Get(ctx, "posts_len").Result()
 	if err != nil {
 		return nil, fmt.Errorf("error getting data")
 	}
+	len, convErr := strconv.Atoi(arrayLength)
+	if convErr != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
 	resData := model.Post{
-		ID:         strconv.Itoa(int(arrayLength[0]) + 1),
+		ID:         strconv.Itoa(len + 1),
 		Title:      input.Title,
 		Content:    input.Content,
 		Visibility: input.Visibility,
@@ -231,12 +243,16 @@ func (r *mutationResolver) DeletePost(ctx context.Context, id string) (*model.Po
 
 // CreateComment is the resolver for the createComment field.
 func (r *mutationResolver) CreateComment(ctx context.Context, input *model.CreateCommentInput) (*model.Comment, error) {
-	arrayLength, err := rdb.JSONArrLen(ctx, "comments_array", "$").Result()
+	arrayLength, err := rdb.Get(ctx, "comments_len").Result()
 	if err != nil {
 		return nil, fmt.Errorf("error getting data")
 	}
+	len, convErr := strconv.Atoi(arrayLength)
+	if convErr != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
 	resData := model.Comment{
-		ID:        strconv.Itoa(int(arrayLength[0]) + 1),
+		ID:        strconv.Itoa(len + 1),
 		Comment:   input.Comment,
 		Reactions: input.Reactions,
 		PostID:    input.PostID,
@@ -298,12 +314,16 @@ func (r *mutationResolver) DeleteComment(ctx context.Context, id string) (*model
 
 // CreateProduct is the resolver for the createProduct field.
 func (r *mutationResolver) CreateProduct(ctx context.Context, input *model.CreateProductInput) (*model.Product, error) {
-	arrayLength, err := rdb.JSONArrLen(ctx, "products_array", "$").Result()
+	arrayLength, err := rdb.Get(ctx, "products_len").Result()
 	if err != nil {
 		return nil, fmt.Errorf("error getting data")
 	}
+	len, convErr := strconv.Atoi(arrayLength)
+	if convErr != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
 	resData := model.Product{
-		ID:          strconv.Itoa(int(arrayLength[0]) + 1),
+		ID:          strconv.Itoa(len + 1),
 		Title:       input.Title,
 		Description: input.Description,
 		Brand:       input.Brand,
@@ -365,12 +385,16 @@ func (r *mutationResolver) DeleteProduct(ctx context.Context, id string) (*model
 
 // CreateTodo is the resolver for the createTodo field.
 func (r *mutationResolver) CreateTodo(ctx context.Context, input *model.CreateTodoInput) (*model.Todo, error) {
-	arrayLength, err := rdb.JSONArrLen(ctx, "todos_array", "$").Result()
+	arrayLength, err := rdb.Get(ctx, "todos_len").Result()
 	if err != nil {
 		return nil, fmt.Errorf("error getting data")
 	}
+	len, convErr := strconv.Atoi(arrayLength)
+	if convErr != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
 	resData := model.Todo{
-		ID:     strconv.Itoa(int(arrayLength[0]) + 1),
+		ID:     strconv.Itoa(len + 1),
 		Todo:   input.Todo,
 		State:  input.State,
 		Closed: input.Closed,
@@ -420,12 +444,16 @@ func (r *mutationResolver) DeleteTodo(ctx context.Context, id string) (*model.To
 
 // CreateMovie is the resolver for the createMovie field.
 func (r *mutationResolver) CreateMovie(ctx context.Context, input *model.CreateMovieInput) (*model.Movie, error) {
-	arrayLength, err := rdb.JSONArrLen(ctx, "movies_array", "$").Result()
+	arrayLength, err := rdb.Get(ctx, "movies_len").Result()
 	if err != nil {
 		return nil, fmt.Errorf("error getting data")
 	}
+	len, convErr := strconv.Atoi(arrayLength)
+	if convErr != nil {
+		return nil, fmt.Errorf("error getting data")
+	}
 	resData := model.Movie{
-		ID:         strconv.Itoa(int(arrayLength[0]) + 1),
+		ID:         strconv.Itoa(len + 1),
 		Title:      input.Title,
 		Year:       input.Year,
 		Rated:      input.Rated,

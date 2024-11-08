@@ -94,7 +94,7 @@ func GeoRedisById() gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be bigger than 0"})
 			return
 		}
-		obj, err := rdb.JSONGet(c, "capitals_array", ".features["+fmt.Sprintf("%d", id-1)+"]").Result()
+		obj, err := rdb.JSONGet(c, "cities_array", ".features["+fmt.Sprintf("%d", id-1)+"]").Result()
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Error getting data", "Tip": "Check if the index is correct"})
 			return

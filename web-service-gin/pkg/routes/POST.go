@@ -10,10 +10,15 @@ import (
 
 func PostRedis(dataType string) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		arrayLength, err := rdb.JSONArrLen(c, dataType+"_array", "$").Result()
+		arrayLength, err := rdb.Get(c, dataType+"_len").Result()
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Error getting data", "Tip": "Check if the index is correct"})
+			return
+		}
+		len, convErr := strconv.Atoi(arrayLength)
+		if convErr != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Error parsing the data"})
 			return
 		}
 		// WARNING
@@ -28,7 +33,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 			if !newSong.IsExplicit {
 				newSong.IsExplicit = false
 			}
-			newSong.ID = strconv.Itoa(int(arrayLength[0]) + 1)
+			newSong.ID = strconv.Itoa(len + 1)
 			c.JSON(http.StatusCreated, gin.H{"data": newSong})
 		} else if dataType == "users" {
 			var newUser models.UserReq
@@ -36,7 +41,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 				return
 			}
-			newUser.ID = strconv.Itoa(int(arrayLength[0]) + 1)
+			newUser.ID = strconv.Itoa(len + 1)
 			c.JSON(http.StatusCreated, gin.H{"data": newUser})
 		} else if dataType == "posts" {
 			var newPost models.PostReq
@@ -44,7 +49,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 				return
 			}
-			newPost.ID = strconv.Itoa(int(arrayLength[0]) + 1)
+			newPost.ID = strconv.Itoa(len + 1)
 			c.JSON(http.StatusCreated, gin.H{"data": newPost})
 		} else if dataType == "comments" {
 			var newComment models.CommentReq
@@ -52,7 +57,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 				return
 			}
-			newComment.ID = strconv.Itoa(int(arrayLength[0]) + 1)
+			newComment.ID = strconv.Itoa(len + 1)
 			c.JSON(http.StatusCreated, gin.H{"data": newComment})
 		} else if dataType == "products" {
 			var newProduct models.ProductReq
@@ -60,7 +65,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 				return
 			}
-			newProduct.ID = strconv.Itoa(int(arrayLength[0]) + 1)
+			newProduct.ID = strconv.Itoa(len + 1)
 			c.JSON(http.StatusCreated, gin.H{"data": newProduct})
 		} else if dataType == "todos" {
 			var newTodo models.TodoReq
@@ -71,7 +76,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 			if !newTodo.Closed {
 				newTodo.Closed = false
 			}
-			newTodo.ID = strconv.Itoa(int(arrayLength[0]) + 1)
+			newTodo.ID = strconv.Itoa(len + 1)
 			c.JSON(http.StatusCreated, gin.H{"data": newTodo})
 		} else if dataType == "movies" {
 			var newMovie models.MovieReq
@@ -79,7 +84,7 @@ func PostRedis(dataType string) gin.HandlerFunc {
 				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 				return
 			}
-			newMovie.ID = strconv.Itoa(int(arrayLength[0]) + 1)
+			newMovie.ID = strconv.Itoa(len + 1)
 			c.JSON(http.StatusCreated, gin.H{"data": newMovie})
 		}
 	}
