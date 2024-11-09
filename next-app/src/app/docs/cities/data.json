@@ -1,52 +1,60 @@
 {
     "title": "This is the Cities data collection",
-    "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga, nam error nihil facilis dolorum consequuntur facere aut porro totam, labore blanditiis voluptatum tempora odio! Molestiae hic quasi harum eius dolore.",
+    "desc": "You can use these endpoints to get Features and Features Collections in GeoJSON. In docs you can find a small map with this data. POST PUT and DELETE endpoints will arrive soon",
     "endpoints": [
         {
             "status": "GET",
-            "path": "/api/mit/edu",
+            "path": "/api/cities",
             "payload": null,
-            "response": {},
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "queries": "?limit=n",
+            "response": [
+                {
+                    "id": "BD",
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            90.24,
+                            23.43
+                        ]
+                    },
+                    "properties": {
+                        "city": "Dhaka",
+                        "country": "Bangladesh",
+                        "iso2": "BD",
+                        "iso3": "BGD",
+                        "tld": "bd"
+                    }
+                },
+                "239 more elements..."
+            ],
+            "desc": "Get an array with the complete list of elements"
         },
         {
             "status": "GET",
-            "path": "/api/mit/edu/:id",
-            "payload": {},
-            "response": null,
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
-        },
-        {
-            "status": "PUT",
-            "path": "/api/mit/edu/:id",
-            "payload": [
+            "path": "/api/cities/:index",
+            "payload": null,
+            "response": [
                 {
-                    "hola": 2
-                },
-                "99 more elements..."],
-            "response": {},
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
-        },
-        {
-            "status": "PATCH",
-            "path": "/api/mit/edu/:id",
-            "payload": {},
-            "response": { "hola": 2 },
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
-        },
-        {
-            "status": "POST",
-            "path": "/api/mit/edu",
-            "payload": {},
-            "response": {},
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
-        },
-        {
-            "status": "DELETE",
-            "path": "/api/mit/edu/:id",
-            "payload": {},
-            "response": {},
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+                    "id": "BD",
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            90.24,
+                            23.43
+                        ]
+                    },
+                    "properties": {
+                        "city": "Dhaka",
+                        "country": "Bangladesh",
+                        "iso2": "BD",
+                        "iso3": "BGD",
+                        "tld": "bd"
+                    }
+                }
+            ],
+            "desc": "Get an element by index in the collection"
         }
     ]
 }

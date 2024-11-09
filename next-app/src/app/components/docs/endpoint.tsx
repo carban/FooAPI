@@ -5,7 +5,7 @@ import EndpointContent from './endpointContent';
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import Link from "next/link";
 
-export default function Endpoint({ status, path, desc, payload, response }: { status: string, path: string, desc: string, payload: Object | null, response: Object | null }) {
+export default function Endpoint({ status, path, desc, queries, payload, response, img}: { status: string, path: string, queries: string, desc: string, payload: Object | null, response: Object | null, img: string | null}) {
 
     let colors: any = {
         "GET": "bg-blue-400",
@@ -23,6 +23,7 @@ export default function Endpoint({ status, path, desc, payload, response }: { st
     function handleToggle() {
         setToggle(!toggle);
     }
+
     return (
         <div className="p-2 mt-3 bg-gray-800">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between md:space-x-4 flex-wrap">
@@ -37,7 +38,7 @@ export default function Endpoint({ status, path, desc, payload, response }: { st
                 </code>
 
                 {/* Description */}
-                <h3 className="text-sm text-white flex-1">
+                <h3 onClick={handleToggle} className="text-sm text-white flex-1">
                     {desc}
                 </h3>
 
@@ -50,8 +51,7 @@ export default function Endpoint({ status, path, desc, payload, response }: { st
                     )}
                 </button>
             </div>
-
-            {toggle && <EndpointContent payload={payload} response={response} />}
+            {toggle && <EndpointContent queries={queries} payload={payload} response={response} img={img}/>}
         </div>
     );
 }

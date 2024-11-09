@@ -8,7 +8,7 @@ export default function ServicePage({ data }: { data: { title: string, desc: str
         <div className="border-b-2 border-gray-700 m-5"></div>
         {
             endpoints.map((e, index) => (
-                <Endpoint key={index} status={e.status} path={e.path} desc={e.desc} payload={e.payload} response={e.response} />
+                <Endpoint key={index} status={e.status} path={e.path} desc={e.desc} queries={e.queries} payload={e.payload} response={e.response} img={e.img} />
             ))
         }
     </div>

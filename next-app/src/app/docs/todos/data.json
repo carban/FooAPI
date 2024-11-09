@@ -1,6 +1,6 @@
 {
     "title": "This is the To-dos data collection",
-    "desc": "Here you can find a list of to-dos, these to-dos are fake generated. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app",
+    "desc": "Here you can find a list of to-dos, these to-dos are fake generated. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details click on the description",
     "endpoints": [
         {
             "status": "GET",
@@ -28,7 +28,7 @@
                 "state": "Working",
                 "closed": true,
                 "userId": "1"
-        },
+            },
             "desc": "Get an element by ID"
         },
         {
@@ -75,7 +75,6 @@
                 "state": "Working",
                 "closed": true,
                 "userId": "1"
-
             },
             "desc": "Update partial fields of an element."
         },
@@ -109,9 +108,19 @@
         {
             "status": "GRAPHQL",
             "path": "/query",
-            "payload": {},
+            "payload": {
+                "query": [
+                    "todos: [Todo!]!",
+                    "todo(id: ID!): Todo"
+                ],
+                "mutation": [
+                    "createTodo(input: CreateTodoInput): Todo!",
+                    "updateTodo(id: ID!, input: UpdateTodoInput): Todo!",
+                    "deleteTodo(id: ID!): Todo!"
+                ]
+            },
             "response": {
-                "id": "$id"
+                "data": "According to your request"
             },
             "desc": "Endpoint to send your GraphQL queries"
         },

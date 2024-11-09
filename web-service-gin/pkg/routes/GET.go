@@ -126,10 +126,30 @@ func GeoRedis() gin.HandlerFunc {
 func Img() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		width, _ := strconv.Atoi(c.Param("width"))
+		if width <= 0 || width > 2000 {
+			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Width must be greater than 0 and less than 1000"})
+			return
+		}
 		height, _ := strconv.Atoi(c.Param("height"))
+		if height <= 0 || height > 2000 {
+			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Height must be greater than 0 and less than 1000"})
+			return
+		}
 		bgColor := c.Param("bgColor")
+		if len(bgColor) != 6 {
+			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "bg color must be a hex value like: ff0000"})
+			return
+		}
 		fontColor := c.Param("fontColor")
+		if len(fontColor) != 6 {
+			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "font color must be a hex value like: ff0000"})
+			return
+		}
 		text := c.Param("text")
+		if len(text) <= 0 || len(text) > 10 {
+			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "text length must be greater than 0 and less than 10"})
+			return
+		}
 		textLenght := len(text)
 
 		// Create a new RGBA image

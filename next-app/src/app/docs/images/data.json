@@ -1,20 +1,22 @@
 {
     "title": "This is the Images data collection",
-    "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga, nam error nihil facilis dolorum consequuntur facere aut porro totam, labore blanditiis voluptatum tempora odio! Molestiae hic quasi harum eius dolore.",
+    "desc": "The first consists of consulting only 10 AI-generated images that you can use as templates. The second one consists of a simple image generator where you must indicate the width, length, background color (hex), font color (hex) and a text that must not exceed 10 characters",
     "endpoints": [
         {
             "status": "GET",
-            "path": "/api/mit/edu",
+            "path": "/img/:id",
             "payload": null,
-            "response": {},
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "response": null,
+            "img": "1",
+            "desc": "Get 1 of 10 AI-generated images"
         },
         {
             "status": "GET",
-            "path": "/api/mit/edu/:id",
-            "payload": {},
+            "path": "/imgmaker/:width/:height/:bg/:fn/:text",
+            "payload": null,
             "response": null,
-            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi corrupti dolor"
+            "img": "foooo",
+            "desc": "Create your custom images indicating the paremeters"
         }
     ]
 }

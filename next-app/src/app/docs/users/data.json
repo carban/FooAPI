@@ -1,11 +1,12 @@
 {
     "title": "This is the Users data collection",
-    "desc": "Here you can find a list of users, these users are fake generated. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app",
+    "desc": "Here you can find a list of users, these users are fake generated. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details click on the description",
     "endpoints": [
         {
             "status": "GET",
             "path": "/api/users",
             "payload": null,
+            "queries": "?limit=n",
             "response": [
                 {
                     "id": "1",
@@ -163,9 +164,19 @@
         {
             "status": "GRAPHQL",
             "path": "/query",
-            "payload": {},
+            "payload": {
+                "query": [
+                    "users: [User!]!",
+                    "user(id: ID!): User"
+                ],
+                "mutation": [
+                    "createUser(input: CreateUserInput): User!",
+                    "updateUser(id: ID!, input: UpdateUserInput): User!",
+                    "deleteUser(id: ID!): User!"
+                ]
+            },
             "response": {
-                "id": "$id"
+                "data": "According to your request"
             },
             "desc": "Endpoint to send your GraphQL queries"
         },

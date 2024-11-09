@@ -154,7 +154,7 @@ export default async function Home() {
             <Map position={[12.22, -1.31]} zoom={2} />
          </div>
          <p className="text-white text-lg">
-            We are working on the <u className="font-extrabold">Countries</u> data colletion. The plan is that you can get the geometry of some countries :)  
+            I am working on the <u className="font-extrabold">Countries</u> data colletion. The plan is that you can get the geometry of some countries :)  
          </p>
       </section>
       <hr className="bg-gray-900 border-gray-700"/>
@@ -164,7 +164,7 @@ export default async function Home() {
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-white">Custom Mock</h1>
          </div>
          <p className="text-white text-lg">
-            We are working on it... wait for it soon :)
+            I am working on it... wait for it soon :)
          </p>
       </section>
       <hr className="bg-gray-900 border-gray-700"/>
@@ -174,7 +174,7 @@ export default async function Home() {
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-white">AI</h1>
          </div>
          <p className="text-white text-lg">
-            We are working on it... wait for it soon :)
+            I am working on it... wait for it soon :)
          </p>
       </section>
    </div >

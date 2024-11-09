@@ -1,6 +1,6 @@
 {
     "title": "This is the Comments data collection",
-    "desc": "Here you can find a list of comments, these comments are fake generated. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app",
+    "desc": "Here you can find a list of comments, these comments are fake generated. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details click on the description",
     "endpoints": [
         {
             "status": "GET",
@@ -147,9 +147,19 @@
         {
             "status": "GRAPHQL",
             "path": "/query",
-            "payload": {},
+            "payload": {
+                "query": [
+                    "comments: [Comment!]!",
+                    "comment(id: ID!): Comment"
+                ],
+                "mutation": [
+                    "createComment(input: CreateCommentInput): Comment!",
+                    "updateComment(id: ID!, input: UpdateCommentInput): Comment!",
+                    "deleteComment(id: ID!): Comment!"
+                ]
+            },
             "response": {
-                "id": "$id"
+                "data": "According to your request"
             },
             "desc": "Endpoint to send your GraphQL queries"
         },
