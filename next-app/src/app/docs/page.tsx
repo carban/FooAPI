@@ -3,6 +3,11 @@ import { GrGraphQl } from "react-icons/gr";
 import { RiBracesFill, RiMapPinLine, RiPaintBrushLine, RiRobot2Line } from "react-icons/ri";
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+   title: "Docs"
+}
 
 export default async function Home() {
 

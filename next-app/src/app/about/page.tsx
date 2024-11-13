@@ -1,6 +1,11 @@
 import Link from "next/link";
 import Foot from "../components/foot";
 import Navbar from "../components/navbar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "About"
+}
 
 export default function About() {
     return <div>
