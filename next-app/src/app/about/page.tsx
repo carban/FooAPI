@@ -14,7 +14,7 @@ export default function About() {
                 This is an API you can use as placeholder in your app. The idea is to use close realistic data, fast and simple.
             </p>
             <p className="text-white text-lg">
-                I'm working to finish the features announced and keep adding new features that help people get better dummy data for their projects.
+                I am working to finish the features announced and keep adding new features that help people get better dummy data for their projects.
             </p>
             <p className="text-white text-lg">
                 If you want to contact me or give me ideas to enhance the project, email to me
