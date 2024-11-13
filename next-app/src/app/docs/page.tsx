@@ -15,6 +15,7 @@ export default async function Home() {
    ), [])
 
    return <div>
+      <h1 className="mb-10 text-3xl font-semibold tracking-tight text-white">Documentation</h1>
       <section id="dummy" className="mb-10">
          <div className="inline-flex">
             <RiBracesFill className="w-8 h-8 text-primary" />
@@ -23,7 +24,7 @@ export default async function Home() {
          <p className="text-white text-lg">
             On the left side menu you will find how perform the requests on the dummy data. This is a REST service where for every categorie you will find the endpoint, payload and response. You are free to explore the categories and check how they works.      </p>
       </section>
-      <hr className="bg-gray-900 border-gray-700"/>
+      <hr className="bg-gray-900 border-gray-700" />
       <section id="ql" className="mb-10 mt-10">
 
          <div className="inline-flex">
@@ -139,7 +140,7 @@ export default async function Home() {
             docs menu
          </p>
       </section>
-      <hr className="bg-gray-900 border-gray-700"/>
+      <hr className="bg-gray-900 border-gray-700" />
       <section id="geo" className="mb-10 mt-10">
          <div className="inline-flex ">
             <RiMapPinLine className="w-8 h-8 text-primary" />
@@ -154,10 +155,10 @@ export default async function Home() {
             <Map position={[12.22, -1.31]} zoom={2} />
          </div>
          <p className="text-white text-lg">
-            I am working on the <u className="font-extrabold">Countries</u> data colletion. The plan is that you can get the geometry of some countries :)  
+            I am working on the <u className="font-extrabold">Countries</u> data colletion. The plan is that you can get the geometry of some countries :)
          </p>
       </section>
-      <hr className="bg-gray-900 border-gray-700"/>
+      <hr className="bg-gray-900 border-gray-700" />
       <section id="custom" className="mb-10 mt-10">
          <div className="inline-flex ">
             <RiPaintBrushLine className="w-8 h-8 text-primary" />
@@ -167,7 +168,7 @@ export default async function Home() {
             I am working on it... wait for it soon :)
          </p>
       </section>
-      <hr className="bg-gray-900 border-gray-700"/>
+      <hr className="bg-gray-900 border-gray-700" />
       <section id="ai" className="mb-10 mt-10">
          <div className="inline-flex ">
             <RiRobot2Line className="w-8 h-8 text-primary" />
