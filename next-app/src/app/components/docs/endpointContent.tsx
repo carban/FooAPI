@@ -18,7 +18,7 @@ export default function EndpointContent({ queries, payload, response, img }: { q
                 <div className="items-center w-full">
                     {
                         queries ? <div>
-                            <p className="text-gray-400 mb-2">Queries</p>
+                            <p className="text-gray-400 mb-2">Queries Example</p>
                             <SyntaxHighlighter language="json" style={atomOneDark} wrapLines={true} className="w-full mt-2">
                                 {queries}
                             </SyntaxHighlighter>

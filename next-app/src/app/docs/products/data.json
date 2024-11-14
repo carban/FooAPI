@@ -6,11 +6,12 @@
             "status": "GET",
             "path": "/api/products",
             "payload": null,
+            "queries": "?limit=n",
             "response": [
                 {
                     "id": "1",
                     "title": "Vertical Herb Garden Kit with LED Grow Lights",
-                    "description": "Grow fresh herbs year-round, even in limited space! This vertical herb garden kit utilizes a compact design with tiered planters. Integrated LED grow lights provide optimal light conditions for your herbs, ensuring healthy growth regardless of natural light availability.",
+                    "description": "Grow fresh herbs year-round, even in limited space!...",
                     "brand": "UrbanSprout",
                     "category": "Gardening",
                     "price": 19.2,
@@ -28,7 +29,7 @@
             "response": {
                 "id": "1",
                 "title": "Vertical Herb Garden Kit with LED Grow Lights",
-                "description": "Grow fresh herbs year-round, even in limited space! This vertical herb garden kit utilizes a compact design with tiered planters. Integrated LED grow lights provide optimal light conditions for your herbs, ensuring healthy growth regardless of natural light availability.",
+                "description": "Grow fresh herbs year-round, even in limited space!...",
                 "brand": "UrbanSprout",
                 "category": "Gardening",
                 "price": 19.2,
@@ -44,7 +45,7 @@
             "response": {
                 "id": "1",
                 "title": "Vertical Herb Garden Kit with LED Grow Lights",
-                "description": "Grow fresh herbs year-round, even in limited space! This vertical herb garden kit utilizes a compact design with tiered planters. Integrated LED grow lights provide optimal light conditions for your herbs, ensuring healthy growth regardless of natural light availability.",
+                "description": "Grow fresh herbs year-round, even in limited space!...",
                 "brand": "UrbanSprout",
                 "category": "Gardening",
                 "price": 19.2,
