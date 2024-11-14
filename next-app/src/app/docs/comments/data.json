@@ -139,7 +139,7 @@
         {
             "status": "DELETE",
             "path": "/api/comments/:id",
-            "payload": {},
+            "payload": null,
             "response": {
                 "id": "$id"
             },

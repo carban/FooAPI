@@ -100,7 +100,7 @@
         {
             "status": "DELETE",
             "path": "/api/todos/:id",
-            "payload": {},
+            "payload": null,
             "response": {
                 "id": "$id"
             },

@@ -203,7 +203,7 @@
         {
             "status": "DELETE",
             "path": "/api/movies/:id",
-            "payload": {},
+            "payload": null,
             "response": {
                 "id": "$id"
             },

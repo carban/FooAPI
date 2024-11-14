@@ -155,7 +155,7 @@
         {
             "status": "DELETE",
             "path": "/api/users/:id",
-            "payload": {},
+            "payload": null,
             "response": {
                 "id": "$id"
             },

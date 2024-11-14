@@ -123,7 +123,7 @@
         {
             "status": "DELETE",
             "path": "/api/products/:id",
-            "payload": {},
+            "payload": null,
             "response": {
                 "id": "$id"
             },

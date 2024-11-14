@@ -115,7 +115,7 @@
         {
             "status": "DELETE",
             "path": "/api/songs/:id",
-            "payload": {},
+            "payload": null,
             "response": {
                 "id": "$id"
             },

@@ -179,7 +179,7 @@
         {
             "status": "DELETE",
             "path": "/api/posts/:id",
-            "payload": {},
+            "payload": null,
             "response": {
                 "id": "$id"
             },
