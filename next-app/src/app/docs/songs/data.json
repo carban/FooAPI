@@ -1,6 +1,6 @@
 {
     "title": "This is the Songs data collection",
-    "desc": "Here you can find a list of songs, these songs are real, not fake generated. Most of these songs are from 2024. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details click on the description",
+    "desc": "Here you can find a list of real songs, not fake generated ones. Most of these songs are from 2024. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details click on the description",
     "endpoints": [
         {
             "status": "GET",

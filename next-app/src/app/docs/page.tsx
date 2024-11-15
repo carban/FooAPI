@@ -27,7 +27,7 @@ export default async function Home() {
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-white">Dummy Data</h1>
          </div>
          <p className="text-white text-lg">
-            On the left side menu you will find how perform the requests on the dummy data. This is a REST service where for every categorie you will find the endpoint, payload and response. You are free to explore the categories and check how they works.      </p>
+         On the left-side menu, you will find instructions on how to perform requests on the dummy data. This is a REST service where, for every category, you will find the endpoint, payload, and response. Feel free to explore the categories and check how they work            </p>
       </section>
       <hr className="bg-gray-900 border-gray-700" />
       <section id="ql" className="mb-10 mt-10">
@@ -37,7 +37,7 @@ export default async function Home() {
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-white">GraphQL</h1>
          </div>
          <p className="text-white text-lg">
-            This is a different way of consume data comparing with REST, we suggest first check your queries in
+         This is a different way to consume data compared to REST. I suggest first checking your queries in
             <code className="text-red-500 text-base hover:underline mb-2 md:mb-0 w-64 flex-1">
                <Link href="/playground"> /playground</Link>
             </code>
