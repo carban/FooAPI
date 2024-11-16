@@ -16,8 +16,9 @@ export default function About() {
                 Hi 👋, this is a personal project, I hope it is useful for you.
             </p>
             <p className="text-white text-lg">
-                This is an API you can use as placeholder in your app. The idea is to use close realistic data, fast and simple.
-            </p>
+                This project aims to provide test data and different ways to manipulate it, all in one place, quickly and easily.            </p>
+            <p className="text-white text-lg">
+                That's why here you can find generic data, geographic data, images and methods like REST and GraphQL.            </p>
             <p className="text-white text-lg">
                 I am working to finish the features announced and keep adding new features that help people get better dummy data for their projects.
             </p>
