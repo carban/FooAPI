@@ -1,10 +1,11 @@
 {
     "title": "This is the Users data collection",
-    "desc": "Here you can find a list of users, these users are fake generated. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details click on the description",
+    "desc": "Here you can find a list of users, these users are fake generated. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details you can click each row",
     "endpoints": [
         {
             "status": "GET",
             "path": "/api/users",
+            "code": "fetch('https://fooapi.com/api/users')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "queries": "?limit=n",
             "response": [
@@ -29,6 +30,7 @@
         {
             "status": "GET",
             "path": "/api/users/:id",
+            "code": "fetch('https://fooapi.com/api/users/1')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "response": {
                 "id": "1",
@@ -49,6 +51,7 @@
         {
             "status": "GET",
             "path": "/api/users/rand",
+            "code": "fetch('https://fooapi.com/api/users/rand')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "response": {
                 "id": "1",
@@ -69,6 +72,7 @@
         {
             "status": "PUT",
             "path": "/api/users/:id",
+            "code": "fetch('https://fooapi.com/api/users/1',{\n method: 'PUT',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'name':'foooName',\n  'lastname':'fooLastname',\n  'username':'fooUsername',\n  'birthdate':'1990-01-01',\n  'age':30,\n  'gender':'Male',\n  'phone':'+637916758914',\n  'email':'foo@example.com',\n  'country':'USA',\n  'height':180,\n  'weight':60  \n  })\n})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": {
                 "name": "foooName",
                 "lastname": "fooLastname",
@@ -101,6 +105,7 @@
         {
             "status": "PATCH",
             "path": "/api/users/:id",
+            "code": "fetch('https://fooapi.com/api/users/1',{\n method: 'PATCH',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'name':'foooName'\n })\n})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": {
                 "name": "foooName"
             },
@@ -123,6 +128,7 @@
         {
             "status": "POST",
             "path": "/api/users",
+            "code": "fetch('https://fooapi.com/api/users',{\n method: 'POST',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'name':'foooName',\n  'lastname':'fooLastname',\n  'username':'fooUsername',\n  'birthdate':'1990-01-01',\n  'age':30,\n  'gender':'Male',\n  'phone':'+637916758914',\n  'email':'foo@example.com',\n  'country':'USA',\n  'height':180,\n  'weight':60  \n  })\n})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": {
                 "name": "foooName",
                 "lastname": "fooLastname",
@@ -154,6 +160,7 @@
         },
         {
             "status": "DELETE",
+            "code": "fetch('https://fooapi.com/api/users/1', {method: 'DELETE'})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "path": "/api/users/:id",
             "payload": null,
             "response": {

@@ -1,10 +1,11 @@
 {
     "title": "This is the Movies data collection",
-    "desc": "Here you can find a list of real movies, not fake generated ones. This movies are from the top 50 list of IMDb. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details click on the description",
+    "desc": "Here you can find a list of real movies, not fake generated ones. This movies are from the top 50 list of IMDb. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details you can click each row",
     "endpoints": [
         {
             "status": "GET",
             "path": "/api/movies",
+            "code": "fetch('https://fooapi.com/api/movies')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "queries": "?limit=n",
             "response": [
@@ -19,11 +20,11 @@
                     "director": "Frank Darabont",
                     "writer": "Stephen King, Frank Darabont",
                     "actors": "Tim Robbins, Morgan Freeman, Bob Gunton",
-                    "plot": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
+                    "plot": "Over the course of several years...",
                     "language": "English",
                     "country": "United States",
                     "awards": "Nominated for 7 Oscars. 21 wins \u0026 42 nominations total",
-                    "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
+                    "poster": "https://m.media-amazon.com/images/...",
                     "imdbRating": "9.3",
                     "imdbId": "tt0111161",
                     "boxOffice": "$28,767,189"
@@ -35,6 +36,7 @@
         {
             "status": "GET",
             "path": "/api/movies/:id",
+            "code": "fetch('https://fooapi.com/api/movies/1')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "response": {
                 "id": "1",
@@ -47,11 +49,11 @@
                 "director": "Frank Darabont",
                 "writer": "Stephen King, Frank Darabont",
                 "actors": "Tim Robbins, Morgan Freeman, Bob Gunton",
-                "plot": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
+                "plot": "Over the course of several years...",
                 "language": "English",
                 "country": "United States",
                 "awards": "Nominated for 7 Oscars. 21 wins \u0026 42 nominations total",
-                "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
+                "poster": "https://m.media-amazon.com/images/...",
                 "imdbRating": "9.3",
                 "imdbId": "tt0111161",
                 "boxOffice": "$28,767,189"
@@ -61,6 +63,7 @@
         {
             "status": "GET",
             "path": "/api/movies/rand",
+            "code": "fetch('https://fooapi.com/api/movies/rand')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "response": {
                 "id": "1",
@@ -73,11 +76,11 @@
                 "director": "Frank Darabont",
                 "writer": "Stephen King, Frank Darabont",
                 "actors": "Tim Robbins, Morgan Freeman, Bob Gunton",
-                "plot": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
+                "plot": "Over the course of several years...",
                 "language": "English",
                 "country": "United States",
                 "awards": "Nominated for 7 Oscars. 21 wins \u0026 42 nominations total",
-                "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
+                "poster": "https://m.media-amazon.com/images/...",
                 "imdbRating": "9.3",
                 "imdbId": "tt0111161",
                 "boxOffice": "$28,767,189"
@@ -87,6 +90,7 @@
         {
             "status": "PUT",
             "path": "/api/movies/:id",
+            "code": "fetch('https://fooapi.com/api/movies/1',{\n method: 'PUT',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'title':'Foo title',\n  'year':'1994',\n  'rated':'R',\n  'released':'14-10-1994',\n  'runtime':'142 min',\n  'genre':'Drama',\n  'director':'Foo director',\n  'writer':'Foo writer',\n  'actors':'Fooman',\n  'plot':'A Foo movie',\n  'language':'English',\n  'country':'United States',\n  'awards':'Nominated for 11 oscars',\n  'poster':'Foo poster',\n  'imdbRating':'10',\n  'imdbId':'None',\n  'boxOffice':'$1'\n })\n})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": {
                 "title": "Foo title",
                 "year": "1994",
@@ -101,7 +105,7 @@
                 "language": "English",
                 "country": "United States",
                 "awards": "Nominated for 11 oscars",
-                "poster": "",
+                "poster": "Foo poster",
                 "imdbRating": "10",
                 "imdbId": "None",
                 "boxOffice": "$1"
@@ -131,6 +135,7 @@
         {
             "status": "PATCH",
             "path": "/api/movies/:id",
+            "code": "fetch('https://fooapi.com/api/movies/1',{\n method: 'PATCH',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'title': 'Fooooo movieee'\n  })\n})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": {
                 "title": "Fooooo movieee"
             },
@@ -145,11 +150,11 @@
                 "director": "Frank Darabont",
                 "writer": "Stephen King, Frank Darabont",
                 "actors": "Tim Robbins, Morgan Freeman, Bob Gunton",
-                "plot": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
+                "plot": "Over the course of several years...",
                 "language": "English",
                 "country": "United States",
                 "awards": "Nominated for 7 Oscars. 21 wins \u0026 42 nominations total",
-                "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
+                "poster": "https://m.media-amazon.com/images/...",
                 "imdbRating": "9.3",
                 "imdbId": "tt0111161",
                 "boxOffice": "$28,767,189"
@@ -159,6 +164,7 @@
         {
             "status": "POST",
             "path": "/api/movies",
+            "code": "fetch('https://fooapi.com/api/movies',{\n method: 'POST',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'title':'Foo title',\n  'year':'1994',\n  'rated':'R',\n  'released':'14-10-1994',\n  'runtime':'142 min',\n  'genre':'Drama',\n  'director':'Foo director',\n  'writer':'Foo writer',\n  'actors':'Fooman',\n  'plot':'A Foo movie',\n  'language':'English',\n  'country':'United States',\n  'awards':'Nominated for 11 oscars',\n  'poster':'Foo poster',\n  'imdbRating':'10',\n  'imdbId':'None',\n  'boxOffice':'$1'\n })\n})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": {
                 "title": "Foo title",
                 "year": "1994",
@@ -203,9 +209,10 @@
         {
             "status": "DELETE",
             "path": "/api/movies/:id",
+            "code": "fetch('https://fooapi.com/api/movies/1', {method: 'DELETE'})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "response": {
-                "id": "$id"
+                "id": "1"
             },
             "desc": "Delete an element."
         },

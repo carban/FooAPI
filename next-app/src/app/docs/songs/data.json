@@ -1,10 +1,11 @@
 {
     "title": "This is the Songs data collection",
-    "desc": "Here you can find a list of real songs, not fake generated ones. Most of these songs are from 2024. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details click on the description",
+    "desc": "Here you can find a list of real songs, not fake generated ones. Most of these songs are from 2024. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details you can click each row",
     "endpoints": [
         {
             "status": "GET",
             "path": "/api/songs",
+            "code": "fetch('https://fooapi.com/api/songs')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "queries": "?limit=n",
             "response": [
@@ -24,6 +25,7 @@
         {
             "status": "GET",
             "path": "/api/songs/:id",
+            "code": "fetch('https://fooapi.com/api/songs/1')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "response": {
                 "id": "1",
@@ -39,6 +41,7 @@
         {
             "status": "GET",
             "path": "/api/songs/rand",
+            "code": "fetch('https://fooapi.com/api/songs/rand')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "response": {
                 "id": "1",
@@ -54,6 +57,7 @@
         {
             "status": "PUT",
             "path": "/api/songs/:id",
+            "code": "fetch('https://fooapi.com/api/songs/1',{\n method: 'PUT',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'name':'foooName',\n  'artists':'Sabrina Carpenter',\n  'isExplicit':true,\n  'durationMs':175459,\n  'albumName':'Espresso',\n  'albumReleaseDate':'2024-04-12'\n  })\n})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": {
                 "name": "foooName",
                 "artists": "Sabrina Carpenter",
@@ -76,6 +80,7 @@
         {
             "status": "PATCH",
             "path": "/api/songs/:id",
+            "code": "fetch('https://fooapi.com/api/songs/1',{\n method: 'PATCH',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'name':'foooName',\n  })\n})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": {
                 "name": "foooName"
             },
@@ -93,6 +98,7 @@
         {
             "status": "POST",
             "path": "/api/songs",
+            "code": "fetch('https://fooapi.com/api/songs',{\n method: 'POST',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'name':'foooName',\n  'artists':'fooArtist',\n  'isExplicit':true,\n  'durationMs':175459,\n  'albumName':'Espresso',\n  'albumReleaseDate':'2024-04-12'\n  })\n})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": {
                 "name": "foooName",
                 "artists": "fooArtist",
@@ -114,10 +120,11 @@
         },
         {
             "status": "DELETE",
+            "code": "fetch('https://fooapi.com/api/songs/1', {method: 'DELETE'})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "path": "/api/songs/:id",
             "payload": null,
             "response": {
-                "id": "$id"
+                "id": "1"
             },
             "desc": "Delete an element."
         },

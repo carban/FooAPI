@@ -5,6 +5,7 @@
         {
             "status": "GET",
             "path": "/img/:id",
+            "code": "'https://fooapi.com/img/1'",
             "payload": null,
             "response": null,
             "img": "1",
@@ -12,6 +13,7 @@
         },
         {
             "status": "GET",
+            "code": "'https://fooapi.com/imgmaker/700/500/0000ff/ff0000/foooo'",
             "path": "/imgmaker/:width/:height/:bg/:fn/:text",
             "payload": null,
             "response": null,

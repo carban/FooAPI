@@ -27,7 +27,11 @@ export default async function Home() {
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-white">Dummy Data</h1>
          </div>
          <p className="text-white text-lg">
-         On the left-side menu, you will find instructions on how to perform requests on the dummy data. This is a REST service where, for every category, you will find the endpoint, payload, and response. Feel free to explore the categories and check how they work            </p>
+            On the left-side menu, you will find instructions on how to perform requests on the dummy data. This is a REST service where, for every category, you will find the endpoint, payload, and response. Feel free to explore the categories and check how they work. For example:  
+            <code className="text-red-500 text-meidum hover:underline mb-2 md:mb-0 w-64 flex-1">
+               <Link href="/api/users"> /api/users</Link>
+            </code>
+         </p>
       </section>
       <hr className="bg-gray-900 border-gray-700" />
       <section id="ql" className="mb-10 mt-10">
@@ -37,12 +41,12 @@ export default async function Home() {
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-white">GraphQL</h1>
          </div>
          <p className="text-white text-lg">
-         This is a different way to consume data compared to REST. I suggest first checking your queries in
-            <code className="text-red-500 text-base hover:underline mb-2 md:mb-0 w-64 flex-1">
+            This is a different way to consume data compared to REST. I suggest first checking your queries in
+            <code className="text-red-500 text-meidum hover:underline mb-2 md:mb-0 w-64 flex-1">
                <Link href="/playground"> /playground</Link>
             </code>
             . The GraphQL queries works on the endpoint
-            <code className="text-red-500 text-base hover:underline mb-2 md:mb-0 w-64 flex-1">
+            <code className="text-red-500 text-meidum hover:underline mb-2 md:mb-0 w-64 flex-1">
                <Link href="/query"> /query </Link>
             </code>
             . Here is a summary of the Schemas, Queries and Mutations you can perform.
@@ -139,7 +143,7 @@ export default async function Home() {
          </div>
          <p className="text-lg">
             You can also see this information in the
-            <code className="text-red-500 text-base hover:underline mb-2 md:mb-0 w-64 flex-1">
+            <code className="text-red-500 text-meidum hover:underline mb-2 md:mb-0 w-64 flex-1">
                <Link href="/playground"> /playground </Link>
             </code>
             docs menu
@@ -152,7 +156,7 @@ export default async function Home() {
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-white">GeoJSON</h1>
          </div>
          <p className="text-white text-lg">
-            Here is a small map with some data obtained by <code className="text-red-500 text-base hover:underline mb-2 md:mb-0 w-64 flex-1">
+            Here is a small map with some data obtained by <code className="text-red-500 text-meidum hover:underline mb-2 md:mb-0 w-64 flex-1">
                <Link href="/api/cities?limit=3"> /api/cities?limit=3</Link>
             </code>
          </p>

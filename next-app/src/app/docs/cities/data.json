@@ -5,6 +5,7 @@
         {
             "status": "GET",
             "path": "/api/cities",
+            "code": "fetch('https://fooapi.com/api/cities')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "queries": "?limit=n",
             "response": [
@@ -33,6 +34,7 @@
         {
             "status": "GET",
             "path": "/api/cities/:index",
+            "code": "fetch('https://fooapi.com/api/cities/1')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "response": [
                 {

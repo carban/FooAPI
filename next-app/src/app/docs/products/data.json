@@ -1,10 +1,11 @@
 {
     "title": "This is the Products data collection",
-    "desc": "Here you can find a list of products, these products are fake generated. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details click on the description",
+    "desc": "Here you can find a list of products, these products are fake generated. Remember these endpoints actually don't modify the source data. You can use this data to enhance, mock or test your app. For details you can click each row",
     "endpoints": [
         {
             "status": "GET",
             "path": "/api/products",
+            "code": "fetch('https://fooapi.com/api/products')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "queries": "?limit=n",
             "response": [
@@ -25,6 +26,7 @@
         {
             "status": "GET",
             "path": "/api/products/:id",
+            "code": "fetch('https://fooapi.com/api/products/1')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "response": {
                 "id": "1",
@@ -41,6 +43,7 @@
         {
             "status": "GET",
             "path": "/api/products/rand",
+            "code": "fetch('https://fooapi.com/api/products/rand')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "response": {
                 "id": "1",
@@ -57,6 +60,7 @@
         {
             "status": "PUT",
             "path": "/api/products/:id",
+            "code": "fetch('https://fooapi.com/api/products/1',{\n method: 'PUT',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'title':'Footitle',\n  'description':'Foodesc',\n  'brand':'FooBrand',\n  'category':'Fooooooo',\n  'price':19.2,\n  'rating':2.5,\n  'stock':13\n })\n})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": {
                 "title": "Foo title",
                 "description": "Foo desc",
@@ -81,6 +85,7 @@
         {
             "status": "PATCH",
             "path": "/api/products/:id",
+            "code": "fetch('https://fooapi.com/api/products/1',{\n method: 'PATCH',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'description':'fooooo',\n  })\n})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": {
                 "description": "fooooo"
             },
@@ -99,6 +104,7 @@
         {
             "status": "POST",
             "path": "/api/products",
+            "code": "fetch('https://fooapi.com/api/products',{\n method: 'POST',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'title':'Foo title',\n  'description':'Foo desc',\n  'brand':'Foo Brand',\n  'category':'Fooooooo',\n  'price':19.2,\n  'rating':2.5,\n  'stock':13\n })\n})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": {
                 "title": "Foo title",
                 "description": "Foo desc",
@@ -123,9 +129,10 @@
         {
             "status": "DELETE",
             "path": "/api/products/:id",
+            "code": "fetch('https://fooapi.com/api/products/1', {method: 'DELETE'})\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
             "response": {
-                "id": "$id"
+                "id": "1"
             },
             "desc": "Delete an element."
         },
