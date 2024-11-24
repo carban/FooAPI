@@ -7,7 +7,7 @@ const inter = Inter({ weight: ["400"], subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: "FooApi | The All in one Fake API",
+    default: "FooApi | The All in One Fake API",
     template: "%s | FooApi"
   },
   description: 'The All in one Fake API - Dummy data for your projects, fast and simple. Users, products, posts, comments and more',
