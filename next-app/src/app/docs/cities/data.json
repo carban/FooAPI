@@ -1,6 +1,6 @@
 {
     "title": "This is the Cities data collection",
-    "desc": "You can use these endpoints to get Features and Features Collections in GeoJSON. In docs you can find a small map with this data. POST PUT and DELETE endpoints will arrive soon",
+    "desc": "You can use these endpoints to get Features and Features Collections in GeoJSON. In docs you can find a small map with this data. POST, PUT, DELETE and GRAPHQL endpoints will arrive soon",
     "endpoints": [
         {
             "status": "GET",
