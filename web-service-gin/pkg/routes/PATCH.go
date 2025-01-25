@@ -5,14 +5,17 @@ import (
 	"fmt"
 	"net/http"
 	"reflect"
+	"regexp"
 	"strconv"
 	models "web-service-gin/models"
 
 	"github.com/gin-gonic/gin"
+	geojson "github.com/paulmach/go.geojson"
 )
 
 func PatchRedisById(dataType string) gin.HandlerFunc {
 	return func(c *gin.Context) {
+		addOne("PATCH-" + dataType)
 		id, convErr := strconv.Atoi(c.Param("id"))
 		if convErr != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be a number"})
@@ -205,5 +208,66 @@ func PatchRedisById(dataType string) gin.HandlerFunc {
 			}
 			c.JSON(http.StatusCreated, gin.H{"data": resData})
 		}
+	}
+}
+
+func GeoRedisPatchById(category string) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		addOne("PATCH-" + category)
+		var (
+			sid    string
+			err    error
+			errMsg string
+		)
+
+		if id, convErr := strconv.Atoi(c.Param("id")); convErr == nil {
+			// by index
+			if id <= 0 {
+				c.JSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be bigger than 0"})
+				return
+			}
+			sid = ".features[" + fmt.Sprintf("%d", id-1) + "]"
+		} else {
+			// by ID
+			if !regexp.MustCompile(`^[a-zA-Z0-9]+$`).MatchString(c.Param("id")) {
+				c.JSON(http.StatusBadRequest, gin.H{"Msg": "Invalid ID", "Tip": "Check the ID"})
+				return
+			}
+			sid = fmt.Sprintf(".features[?(@.id==\"%s\")]", c.Param("id"))
+		}
+		obj, err := rdb.JSONGet(c, category+"_array", sid).Result()
+		if err != nil {
+			if _, err := strconv.Atoi(c.Param("id")); err == nil {
+				errMsg = "Check if the index is correct"
+			} else {
+				errMsg = "Check if the index/ID is correct. Remember ID must be use capital letters"
+			}
+			c.JSON(http.StatusBadRequest, gin.H{"Msg": "Error getting data", "Tip": errMsg})
+			return
+		}
+		var newFeature geojson.Feature
+		if err := c.ShouldBind(&newFeature); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		resData := geojson.Feature{}
+		if err := json.Unmarshal([]byte(obj), &resData); err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Unmarshal error"})
+			return
+		}
+		v := reflect.ValueOf(&resData).Elem()
+		t := v.Type()
+
+		for i := 0; i < t.NumField(); i++ {
+			field := t.Field(i)
+			fieldName := field.Name
+			fieldValue := reflect.ValueOf(newFeature).FieldByName(fieldName)
+
+			if fieldValue.IsValid() && !fieldValue.IsZero() && fieldName != "ID" {
+				v.Field(i).Set(fieldValue)
+			}
+		}
+		c.JSON(http.StatusCreated, gin.H{"data": resData})
+
 	}
 }

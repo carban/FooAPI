@@ -37,4 +37,9 @@
 # GO SERVICES
 /web-service-gin/main
 /gqlgen-web-service/server
+/web-service-custom/main
+
+# LOGS
+/web-service-gin/endpoint_timestamps.log
+/gqlgen-web-service/ql_timestamps.log
 

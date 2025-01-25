@@ -20,6 +20,7 @@ import (
 
 func Redis(dataType string) gin.HandlerFunc {
 	return func(c *gin.Context) {
+		addOne("GET-" + dataType)
 		limitStr := c.Query("limit")
 		if limitStr != "" {
 			limit, err := strconv.Atoi(limitStr)
@@ -93,8 +94,9 @@ func Redis(dataType string) gin.HandlerFunc {
 	}
 }
 
-func GeoRedis() gin.HandlerFunc {
+func GeoRedis(category string) gin.HandlerFunc {
 	return func(c *gin.Context) {
+		addOne("GET-" + category)
 		limitStr := c.Query("limit")
 		if limitStr != "" {
 			limit, err := strconv.Atoi(limitStr)
@@ -107,7 +109,7 @@ func GeoRedis() gin.HandlerFunc {
 				return
 			}
 		}
-		obj, err := rdb.JSONGet(c, "cities_array", "$.features[0:"+limitStr+"]").Result()
+		obj, err := rdb.JSONGet(c, category+"_array", "$.features[0:"+limitStr+"]").Result()
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Error getting data from Redis"})
 			return
@@ -125,6 +127,7 @@ func GeoRedis() gin.HandlerFunc {
 
 func Img() gin.HandlerFunc {
 	return func(c *gin.Context) {
+		addOne("GET-IMG")
 		width, _ := strconv.Atoi(c.Param("width"))
 		if width <= 0 || width > 2000 {
 			c.JSON(http.StatusInternalServerError, gin.H{"Msg": "Width must be greater than 0 and less than 1000"})

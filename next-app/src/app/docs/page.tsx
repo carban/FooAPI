@@ -19,6 +19,14 @@ export default async function Home() {
       }
    ), [])
 
+   const Map2 = useMemo(() => dynamic(
+      () => import('@/app/docs/Map2'),
+      {
+         loading: () => <p>A map is loading</p>,
+         ssr: false
+      }
+   ), [])
+
    return <div>
       <h1 className="mb-10 text-3xl font-semibold tracking-tight text-white">Documentation</h1>
       <section id="dummy" className="mb-10">
@@ -27,7 +35,7 @@ export default async function Home() {
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-white">Dummy Data</h1>
          </div>
          <p className="text-white text-lg">
-            On the left-side menu, you will find instructions on how to perform requests on the dummy data. This is a REST service where, for every category, you will find the endpoint, payload, and response. Feel free to explore the categories and check how they work. For example:  
+            On the left-side menu, you will find instructions on how to perform requests on the dummy data. This is a REST service where, for every category, you will find the endpoint, payload, and response. Feel free to explore the categories and check how they work. For example:
             <code className="text-red-500 text-meidum hover:underline mb-2 md:mb-0 w-64 flex-1">
                <Link href="/api/users"> /api/users</Link>
             </code>
@@ -156,6 +164,12 @@ export default async function Home() {
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-white">GeoJSON</h1>
          </div>
          <p className="text-white text-lg">
+            It is important highlight that when you use GeoJSON format the coordinates are in the following order <b>[longitude, latitude]</b>. You are free to check the endpoints and data, using a tool like
+            <code className="text-red-500 text-meidum hover:underline mb-2 md:mb-0 w-64 flex-1">
+               <Link href="https://geojson.io"> https://geojson.io</Link>
+            </code> could be useful to see the result in a map quickly.
+         </p>
+         <p className="text-white text-lg">
             Here is a small map with some data obtained by <code className="text-red-500 text-meidum hover:underline mb-2 md:mb-0 w-64 flex-1">
                <Link href="/api/cities?limit=3"> /api/cities?limit=3</Link>
             </code>
@@ -164,8 +178,19 @@ export default async function Home() {
             <Map position={[12.22, -1.31]} zoom={2} />
          </div>
          <p className="text-white text-lg">
-            I am working on the <u className="font-extrabold">Countries</u> data colletion. The plan is that you can get the geometry of some countries :)
+            Here is another map with some geometry data obtained by <code className="text-red-500 text-meidum hover:underline mb-2 md:mb-0 w-64 flex-1">
+               <Link href="/api/countries/COL"> /api/countries/COL</Link>
+            </code>
+            <code className="text-red-500 text-meidum hover:underline mb-2 md:mb-0 w-64 flex-1">
+               <Link href="/api/countries/EGY"> /api/countries/EGY</Link>
+            </code>
+            <code className="text-red-500 text-meidum hover:underline mb-2 md:mb-0 w-64 flex-1">
+               <Link href="/api/countries/IND"> /api/countries/IND</Link>
+            </code>
          </p>
+         <div className="mb-5 mt-5">
+            <Map2 position={[12.22, -1.31]} zoom={2} />
+         </div>
       </section>
       <hr className="bg-gray-900 border-gray-700" />
       <section id="custom" className="mb-10 mt-10">

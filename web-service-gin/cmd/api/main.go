@@ -41,8 +41,18 @@ func main() {
 			api.POST("/"+category, routes.PostRedis(category))
 			api.DELETE("/"+category+"/:id", routes.DeleteRedisById(category))
 		}
-		api.GET("/cities", routes.GeoRedis())
-		api.GET("/cities/:id", routes.GeoRedisById())
+
+		geoCategories := []string{"cities", "countries"}
+
+		for _, category := range geoCategories {
+			api.GET("/"+category, routes.GeoRedis(category))
+			api.GET("/"+category+"/:id", routes.GeoRedisById(category))
+			api.GET("/"+category+"/rand", routes.GeoRedisRand(category))
+			api.PUT("/"+category+"/:id", routes.GeoRedisPutById(category))
+			api.PATCH("/"+category+"/:id", routes.GeoRedisPatchById(category))
+			api.POST("/"+category, routes.GeoRedisPost(category))
+			api.DELETE("/"+category+"/:id", routes.GeoRedisDeleteById(category))
+		}
 	}
 
 	router.GET("/imgmaker/:width/:height/:bgColor/:fontColor/:text", routes.Img())

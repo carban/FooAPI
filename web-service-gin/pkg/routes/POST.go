@@ -6,10 +6,12 @@ import (
 	models "web-service-gin/models"
 
 	"github.com/gin-gonic/gin"
+	geojson "github.com/paulmach/go.geojson"
 )
 
 func PostRedis(dataType string) gin.HandlerFunc {
 	return func(c *gin.Context) {
+		addOne("POST-" + dataType)
 		arrayLength, err := rdb.Get(c, dataType+"_len").Result()
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -87,5 +89,17 @@ func PostRedis(dataType string) gin.HandlerFunc {
 			newMovie.ID = strconv.Itoa(len + 1)
 			c.JSON(http.StatusCreated, gin.H{"data": newMovie})
 		}
+	}
+}
+
+func GeoRedisPost(category string) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		addOne("POST-" + category)
+		var newFeature geojson.Feature
+		if err := c.BindJSON(&newFeature); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		c.JSON(http.StatusCreated, gin.H{"data": newFeature})
 	}
 }

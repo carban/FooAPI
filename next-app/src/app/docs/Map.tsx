@@ -14,7 +14,7 @@ export default function Map(props: any) {
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-    <Marker position={[23.43, 90.24]}>
+    <Marker position={{lng: 90.24, lat: 23.43}}>
       <Popup>
           <b>Country: </b> Dakha <br /> <b>City: </b> Bangladesh
       </Popup>

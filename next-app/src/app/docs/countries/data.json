@@ -1,5 +1,168 @@
 {
     "title": "This is the Countries data collection",
-    "desc": "I'm working on it... wait for it soon :)",
-    "endpoints": []
+    "desc": "You can use these endpoints to get Features and Features Collections in GeoJSON. In docs you can find a small map with this data. GraphQL will arrive soon to this category.",
+    "endpoints": [
+        {
+            "status": "GET",
+            "path": "/api/countries",
+            "code": "fetch('https://fooapi.com/api/countries')\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "payload": null,
+            "queries": "?limit=n",
+            "response": [
+                {
+                    "id": "LUX",
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            "...Many values..."
+                        ]
+                    },
+                    "properties": {
+                        "name": "Luxembourg"
+                    }
+                },
+                "179 more elements..."
+            ],
+            "desc": "Get an array with the complete list of elements"
+        },
+        {
+            "status": "GET",
+            "path": "/api/countries/:(index or ID)",
+            "code": "fetch('https://fooapi.com/api/countries/100')\n  .then(res => res.json())\n  .then(data => console.log(data))\n//Or..\nfetch('https://fooapi.com/api/countries/LUX')\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "payload": null,
+            "response":                 {
+                "id": "LUX",
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        "...Many values..."
+                    ]
+                },
+                "properties": {
+                    "name": "Luxembourg"
+                }
+            },
+            "desc": "Get an element by index or ID"
+        },
+        {
+            "status": "GET",
+            "path": "/api/countries/rand",
+            "code": "fetch('https://fooapi.com/api/countries/rand')\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "payload": null,
+            "response":                 {
+                "id": "LUX",
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        "...Many values..."
+                    ]
+                },
+                "properties": {
+                    "name": "Luxembourg"
+                }
+            },
+            "desc": "Get a random element"
+        },
+        {
+            "status": "PUT",
+            "path": "/api/countries/:(index or ID)",
+            "code": "fetch('https://fooapi.com/api/countries/100',{ //100 or LUX \n method: 'PUT',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'id':'LUX',\n  'type':'Feature',\n  'geometry':{\n    'type':'Polygon',\n    'coordinates':[111.111, 222.222]\n   },\n  'properties':{\n    'name':'Foo'\n   }\n }\n)})\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "payload": {
+                "id": "LUX",
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [111.111, 222.222]
+                },
+                "properties": {
+                    "name": "Foo"
+                }
+            },
+            "response": {
+                "id": "LUX",
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [111.111, 222.222]
+                },
+                "properties": {
+                    "name": "Foo"
+                }
+            },
+            "desc": "Update a complete element"
+        },
+        {
+            "status": "PATCH",
+            "path": "/api/countries/:(index or ID)",
+            "code": "fetch('https://fooapi.com/api/countries/100',{ //100 or LUX \n method: 'PATCH',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n   'geometry':{\n    'type':'Point',\n    'coordinates':[111.111, 222.222]\n   }\n  })})\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "payload":                 {
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        111.111,
+                        222.222
+                    ]
+                }
+            },
+            "response": {
+                "id": "LUX",
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [111.111, 222.222]
+                },
+                "properties": {
+                    "name": "Luxembourg"
+                }
+            },
+            "desc": "Update partial fields of an element"
+        },
+        {
+            "status": "POST",
+            "path": "/api/countries",
+            "code": "fetch('https://fooapi.com/api/countries',{ //100 or LUX \n method: 'POST',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'id':'FOO',\n  'type':'Feature',\n  'geometry':{\n    'type':'Polygon',\n    'coordinates':[111.111, 222.222]\n   },\n  'properties':{\n    'name':'Foo'\n   }\n }\n)})\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "payload":                 {
+                "id": "FOO",
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        111.111,
+                        222.222
+                    ]
+                },
+                "properties": {
+                    "name": "Foo"
+                }
+            },
+            "response":                  {
+                "id": "FOO",
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        111.111,
+                        222.222
+                    ]
+                },
+                "properties": {
+                    "name": "Foo"
+                }
+            },
+            "desc": "Create a new element"
+        },
+        {
+            "status": "DELETE",
+            "path": "/api/countries/:(index or ID)",
+            "code": "fetch('https://fooapi.com/api/countries/100', /*1 or LUX*/ {method: 'DELETE'})\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "payload": null,
+            "response": {
+                    "id": "LUX"
+                },
+            "desc": "Delete an element"
+        }
+    ]
 }

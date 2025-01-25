@@ -33,6 +33,15 @@ jobs:
         RUNNER_TRACKING_ID="" && ./ql-service &
         echo $?
         pidof ql-service
+    - name: Building and Running custom-service
+      run: |
+        cd web-service-custom/
+        go build main.go
+        mv main custom-service
+        pidof custom-service && killall custom-service || echo "No Process Found"
+        RUNNER_TRACKING_ID="" && ./custom-service &
+        echo $?
+        pidof custom-service
     - name: Building and Running Next app
       run: | 
         cd next-app/

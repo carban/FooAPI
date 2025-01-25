@@ -20,7 +20,7 @@ data = json.load(f)
 r = redis.Redis(host='localhost', port=6379)
 
 r.json().set(name_obj, Path.root_path(), data)
-if name_obj != "cities_array":
+if name_obj != "cities_array" and name_obj != "countries_array":
     r.set(name_obj.split("_")[0]+"_len", len(data))
 else:
     r.set(name_obj.split("_")[0]+"_len", len(data["features"]))

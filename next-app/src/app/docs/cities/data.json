@@ -1,6 +1,6 @@
 {
     "title": "This is the Cities data collection",
-    "desc": "You can use these endpoints to get Features and Features Collections in GeoJSON. In docs you can find a small map with this data. POST, PUT, DELETE and GRAPHQL endpoints will arrive soon",
+    "desc": "You can use these endpoints to get Features and Features Collections in GeoJSON. In docs you can find a small map with this data. GraphQL will arrive soon to this category.",
     "endpoints": [
         {
             "status": "GET",
@@ -27,16 +27,41 @@
                         "tld": "bd"
                     }
                 },
-                "239 more elements..."
+                "240 more elements..."
             ],
             "desc": "Get an array with the complete list of elements"
         },
         {
             "status": "GET",
-            "path": "/api/cities/:index",
-            "code": "fetch('https://fooapi.com/api/cities/1')\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "path": "/api/cities/:(index or ID)",
+            "code": "fetch('https://fooapi.com/api/cities/1')\n  .then(res => res.json())\n  .then(data => console.log(data))\n//Or..\nfetch('https://fooapi.com/api/cities/BD')\n  .then(res => res.json())\n  .then(data => console.log(data))",
             "payload": null,
-            "response": [
+            "response": {
+                "id": "BD",
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        90.24,
+                        23.43
+                    ]
+                },
+                "properties": {
+                    "city": "Dhaka",
+                    "country": "Bangladesh",
+                    "iso2": "BD",
+                    "iso3": "BGD",
+                    "tld": "bd"
+                }
+            },
+            "desc": "Get an element by index or ID"
+        },
+        {
+            "status": "GET",
+            "path": "/api/cities/rand",
+            "code": "fetch('https://fooapi.com/api/cities/rand')\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "payload": null,
+            "response":
                 {
                     "id": "BD",
                     "type": "Feature",
@@ -54,9 +79,138 @@
                         "iso3": "BGD",
                         "tld": "bd"
                     }
+                },
+            "desc": "Get a random element"
+        },
+        {
+            "status": "PUT",
+            "path": "/api/cities/:(index or ID)",
+            "code": "fetch('https://fooapi.com/api/cities/1',{ //1 or BD \n method: 'PUT',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'id':'BD',\n  'type':'Feature',\n  'geometry':{\n    'type':'Point',\n    'coordinates':[111.111, 222.222]\n   },\n  'properties':{\n    'city':'Dhaka',\n    'country':'Bangladesh',\n    'iso2':'BD',\n    'iso3':'BGD',\n    'tld':'bd'\n   }\n }\n)})\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "payload":                 {
+                "id": "BD",
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        111.111,
+                        222.222
+                    ]
+                },
+                "properties": {
+                    "city": "Dhaka",
+                    "country": "Bangladesh",
+                    "iso2": "BD",
+                    "iso3": "BGD",
+                    "tld": "bd"
                 }
-            ],
-            "desc": "Get an element by index in the collection"
+            },
+            "response":
+                {
+                    "id": "BD",
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            111.111,
+                            222.222
+                        ]
+                    },
+                    "properties": {
+                        "city": "Dhaka",
+                        "country": "Bangladesh",
+                        "iso2": "BD",
+                        "iso3": "BGD",
+                        "tld": "bd"
+                    }
+                },
+            "desc": "Update a complete element"
+        },
+        {
+            "status": "PATCH",
+            "path": "/api/cities/:(index or ID)",
+            "code": "fetch('https://fooapi.com/api/cities/1',{ //1 or BD \n method: 'PATCH',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n   'geometry':{\n    'type':'Point',\n    'coordinates':[111.111, 222.222]\n   }\n  })})\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "payload":                 {
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        111.111,
+                        222.222
+                    ]
+                }
+            },
+            "response":
+                {
+                    "id": "BD",
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            111.111,
+                            222.222                        
+                        ]
+                    },
+                    "properties": {
+                        "city": "Dhaka",
+                        "country": "Bangladesh",
+                        "iso2": "BD",
+                        "iso3": "BGD",
+                        "tld": "bd"
+                    }
+                },
+            "desc": "Update partial fields of an element"
+        },
+        {
+            "status": "POST",
+            "path": "/api/cities",
+            "code": "fetch('https://fooapi.com/api/cities',{\n method: 'POST',\n headers: {'Content-Type': 'application/json'},\n body: JSON.stringify({\n  'id':'FOO',\n  'type':'Feature',\n  'geometry':{\n    'type':'Point',\n    'coordinates':[111.111, 222.222]\n   },\n  'properties':{\n    'city':'Foo',\n    'country':'Foo',\n    'iso2':'FOO',\n    'iso3':'FOO',\n    'tld':'foo'\n   }\n }\n)})\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "payload":                 {
+                "id": "FOO",
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        111.111,
+                        222.222
+                    ]
+                },
+                "properties": {
+                    "city": "Foo",
+                    "country": "Foo",
+                    "iso2": "FOO",
+                    "iso3": "FOO",
+                    "tld": "foo"
+                }
+            },
+            "response":
+                {
+                        "id": "FOO",
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [
+                                111.111,
+                                222.222
+                            ]
+                        },
+                        "properties": {
+                            "city": "Foo",
+                            "country": "Foo",
+                            "iso2": "FOO",
+                            "iso3": "FOO",
+                            "tld": "foo"
+                        }
+                    },
+            "desc": "Create a new element"
+        },
+        {
+            "status": "DELETE",
+            "path": "/api/cities/:(index or ID)",
+            "code": "fetch('https://fooapi.com/api/cities/1', /*1 or BD*/ {method: 'DELETE'})\n  .then(res => res.json())\n  .then(data => console.log(data))",
+            "payload": null,
+            "response": {
+                    "id": "BD"
+                },
+            "desc": "Delete an element"
         }
     ]
 }

@@ -3,14 +3,17 @@ package routes
 import (
 	"fmt"
 	"net/http"
+	"regexp"
 	"strconv"
 	models "web-service-gin/models"
 
 	"github.com/gin-gonic/gin"
+	geojson "github.com/paulmach/go.geojson"
 )
 
 func PutRedisById(dataType string) gin.HandlerFunc {
 	return func(c *gin.Context) {
+		addOne("PUT-" + dataType)
 		id, convErr := strconv.Atoi(c.Param("id"))
 		if convErr != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be a number"})
@@ -100,5 +103,49 @@ func PutRedisById(dataType string) gin.HandlerFunc {
 			newMovie.ID = strconv.Itoa(id)
 			c.JSON(http.StatusCreated, gin.H{"data": newMovie})
 		}
+	}
+}
+
+func GeoRedisPutById(category string) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		addOne("PUT-" + category)
+		var (
+			sid    string
+			err    error
+			errMsg string
+		)
+
+		if id, convErr := strconv.Atoi(c.Param("id")); convErr == nil {
+			// by index
+			if id <= 0 {
+				c.JSON(http.StatusBadRequest, gin.H{"Msg": "Error parsing the data", "Tip": "The Id must be bigger than 0"})
+				return
+			}
+			sid = ".features[" + fmt.Sprintf("%d", id-1) + "]"
+		} else {
+			// by ID
+			if !regexp.MustCompile(`^[a-zA-Z0-9]+$`).MatchString(c.Param("id")) {
+				c.JSON(http.StatusBadRequest, gin.H{"Msg": "Invalid ID", "Tip": "Check the ID"})
+				return
+			}
+			sid = fmt.Sprintf(".features[?(@.id==\"%s\")]", c.Param("id"))
+		}
+		_, err = rdb.JSONGet(c, category+"_array", sid).Result()
+		if err != nil {
+			if _, err := strconv.Atoi(c.Param("id")); err == nil {
+				errMsg = "Check if the index is correct"
+			} else {
+				errMsg = "Check if the index/ID is correct. Remember ID must be use capital letters"
+			}
+			c.JSON(http.StatusBadRequest, gin.H{"Msg": "Error getting data", "Tip": errMsg})
+			return
+		}
+
+		var newFeature geojson.Feature
+		if err := c.BindJSON(&newFeature); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		c.JSON(http.StatusCreated, gin.H{"data": newFeature})
 	}
 }
