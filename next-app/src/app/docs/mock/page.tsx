@@ -38,7 +38,7 @@ export default function Custom() {
                 return
             }
             try {
-                const response = await fetch('http://localhost:8082/custom', {
+                const response = await fetch('/custom', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ export default function Custom() {
                 return
             }
             try {
-                const response = await fetch('http://localhost:8082/editcustom/' + data, {
+                const response = await fetch('/editcustom/' + data, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
