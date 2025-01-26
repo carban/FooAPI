@@ -107,7 +107,7 @@ export default function Custom() {
 
     return (
         <div>
-            <h1 className="text-3xl mb-5 text-white">Custom Endpoint Creation</h1>
+            <h1 className="text-3xl mb-5 text-white">Custom Endpoint Maker</h1>
             <p className="text-white text-lg">Here you can create custom endpoints in case you need a dummy endpoint to test specific data. The endpoint expires after 1hr so you must to create a new one.</p>
             <div className="grid grid-cols-2 gap-4 mt-16 mr-8 mb-8">
                 <div>
