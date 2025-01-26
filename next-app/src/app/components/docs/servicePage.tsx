@@ -4,7 +4,7 @@ export default function ServicePage({ data }: { data: { title: string, desc: str
     const { title, desc, endpoints } = data;
     return <div>
         <h1 className="text-3xl mb-5 text-white">{title}</h1>
-        <p className="text-white">{desc}</p>
+        <p className="text-white text-lg">{desc}</p>
         <div className="border-b-2 border-gray-700 m-5"></div>
         {
             endpoints.map((e, index) => (

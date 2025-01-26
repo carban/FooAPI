@@ -32,14 +32,20 @@ export default function Custom() {
             //     response_body: responseBody
             // }))
             try {
-                const response = await fetch('/custom', {
+                JSON.parse(responseBody);
+            } catch (e) {
+                alert("Check the JSON Format");
+                return
+            }
+            try {
+                const response = await fetch('http://localhost:8082/custom', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
                         method: methodName,
-                        response_code:  Number(statusCode),
+                        response_code: Number(statusCode),
                         response_body: responseBody
                     })
                 });
@@ -65,7 +71,13 @@ export default function Custom() {
             //     response_body: responseBody
             // }))
             try {
-                const response = await fetch('/editcustom/' + data, {
+                JSON.parse(responseBody);
+            } catch (e) {
+                alert("Check the JSON Format");
+                return
+            }
+            try {
+                const response = await fetch('http://localhost:8082/editcustom/' + data, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -80,7 +92,7 @@ export default function Custom() {
                 if (!response.ok) {
                     if (response.status == 404) {
                         setExpiredError(true);
-                    }                    
+                    }
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
@@ -96,7 +108,7 @@ export default function Custom() {
     return (
         <div>
             <h1 className="text-3xl mb-5 text-white">Custom Endpoint Creation</h1>
-            <p className="text-white">Here you can create custom endpoints in case you need a dummy endpoint to test specific data. The endpoint expires after 1hr so you must to create a new one.</p>
+            <p className="text-white text-lg">Here you can create custom endpoints in case you need a dummy endpoint to test specific data. The endpoint expires after 1hr so you must to create a new one.</p>
             <div className="grid grid-cols-2 gap-4 mt-16 mr-8 mb-8">
                 <div>
                     <label htmlFor="response" className="block font-medium text-white">
@@ -185,7 +197,7 @@ export default function Custom() {
                             <h1>Too many attempts to create an endpoint, try 1 hour later. You can still using the last one created</h1>
                             : false
                     }
-                                        {
+                    {
                         expiredError ?
                             <h1>Your custom endpoint expired. Reload and create a new one</h1>
                             : false

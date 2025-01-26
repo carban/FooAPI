@@ -18,15 +18,15 @@ function featuredServices(): object[] {
         },
         {
             name: "GeoJSON",
-            desc: "Here you can find a feature collection of cities and (soon) geometries of countries",
+            desc: "Here you can find a feature collection of cities and geometries of countries",
             icon: <RiMapPinLine className="w-8 h-8 text-primary" />,
             path: "/docs#geo"
         },
         {
             name: "Custom Mock",
-            desc: "Here you can create an endpoint, custom payload, custom response. (Coming Soon)",
+            desc: "Here you can create an endpoint, custom request, custom response.",
             icon: <RiPaintBrushLine className="w-8 h-8 text-primary" />,
-            path: "/docs#custom"
+            path: "/docs/mock"
         },
         {
             name: "AI",

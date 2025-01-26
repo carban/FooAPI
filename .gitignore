@@ -34,6 +34,9 @@
 /next-app/*.tsbuildinfo
 /next-app/next-env.d.ts
 
+# Data
+/data-db/*
+
 # GO SERVICES
 /web-service-gin/main
 /gqlgen-web-service/server

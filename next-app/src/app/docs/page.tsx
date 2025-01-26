@@ -199,8 +199,43 @@ export default async function Home() {
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-white">Custom Mock</h1>
          </div>
          <p className="text-white text-lg">
-            I am working on it... wait for it soon :)
+            On             <code className="text-red-500 text-meidum hover:underline mb-2 md:mb-0 w-64 flex-1">
+               <Link href="/api/countries/IND"> /docs/mock</Link>
+            </code> you can create custom endpoints in case you need a dummy endpoint to test specific data. The endpoint expires after 1hr so you must to create a new one. In the mean tiem you can edit the last one created. You have the following options available to create your endpoint:
          </p>
+
+         <table className="w-full border-collapse border border-gray-500">
+            <thead>
+               <tr>
+                  <th className="border border-gray-500 px-4 py-2">Method</th>
+                  <th className="border border-gray-500 px-4 py-2">Status Code</th>
+                  <th className="border border-gray-500 px-4 py-2">Response Body</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td className="border border-gray-500 px-4 py-2">
+                     <code className="block"><span className="text-pink-400">GET</span></code>
+                     <code className="block"><span className="text-pink-400">POST</span></code>
+                     <code className="block"><span className="text-pink-400">PUT</span></code>
+                     <code className="block"><span className="text-pink-400">PATCH</span></code>
+                     <code className="block"><span className="text-pink-400">DELETE</span></code>
+                  </td>
+                  <td className="border border-gray-500 px-4 py-2">
+                     <code className="block"><span className="text-pink-400">200</span></code>
+                     <code className="block"><span className="text-pink-400">400</span></code>
+                     <code className="block"><span className="text-pink-400">401</span></code>
+                     <code className="block"><span className="text-pink-400">403</span></code>
+                     <code className="block"><span className="text-pink-400">404</span></code>
+                     <code className="block"><span className="text-pink-400">500</span></code>
+                     <code className="block"><span className="text-pink-400">503</span></code>
+                  </td>
+                  <td>
+                     <code className="block"><span className="text-pink-400">{"{...your JSON Object}"}</span></code>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
       </section>
       <hr className="bg-gray-900 border-gray-700" />
       <section id="ai" className="mb-10 mt-10">
@@ -209,7 +244,7 @@ export default async function Home() {
             <h1 className="mb-2 text-2xl font-semibold tracking-tight text-white">AI</h1>
          </div>
          <p className="text-white text-lg">
-            I am working on it... wait for it soon :)
+            I am working on it... If you have ideas on this topic contact me :)
          </p>
       </section>
    </div >
