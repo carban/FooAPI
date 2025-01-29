@@ -28,6 +28,15 @@ export default function About() {
           <Link href="mailto:info@fooapi.com"> info@fooapi.com </Link>
         </code>
       </p>
+      <br />
+      <br />
+      <p className="text-white text-lg">
+        If you find this project useful, please consider supporting it:
+      </p>
+      <br />
+      <center>
+        <a href="https://www.buymeacoffee.com/carban" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" alt="Buy Me A Coffee" style={{ height: "60px", width: "217px" }} /></a>
+      </center>
     </div>
     <Foot />
   </div>
