@@ -40,7 +40,7 @@ export default function Navbar() {
                         <Link href="/about" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-800 hover:text-white md:hover:bg-transparent">About</Link>
                     </li>
                     <li>
-                    <a href="https://www.buymeacoffee.com/carban" target="_blank"><b className="md:text-primary">Buy me a coffe!</b></a>
+                        <a href="https://www.buymeacoffee.com/carban" target="_blank"><p className="md:text-primary">Buy me a coffe!</p></a>
                     </li>
                 </ul>
             </div>
